@@ -147,44 +147,47 @@ settingsForm?.addEventListener('submit', async (e) => {
 });
 
 // --- MEDIA UPLOAD LOGIC ---
-const btnUploadVid = document.getElementById('btn-upload-vid');
-const inputUploadVid = document.getElementById('upload-about-vid') as HTMLInputElement | null;
-const progressVid = document.getElementById('upload-progress-vid');
-const urlVidInput = document.getElementById('set-about-vid') as HTMLInputElement | null;
+function setupUploader(btnId: string, inputId: string, progressId: string, targetInputId: string) {
+  const btn = document.getElementById(btnId);
+  const input = document.getElementById(inputId) as HTMLInputElement | null;
+  const progress = document.getElementById(progressId);
+  const target = document.getElementById(targetInputId) as HTMLInputElement | null;
 
-if (btnUploadVid && inputUploadVid && progressVid && urlVidInput) {
-  btnUploadVid.addEventListener('click', () => {
-    inputUploadVid.click();
-  });
+  if (btn && input && progress && target) {
+    btn.addEventListener('click', () => input.click());
 
-  inputUploadVid.addEventListener('change', async (e: any) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    input.addEventListener('change', async (e: any) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
 
-    try {
-      progressVid.textContent = 'Upload en cours, veuillez patienter...';
-      const fileExt = file.name.split('.').pop();
-      const fileName = `video-${Date.now()}.${fileExt}`;
-      const filePath = `about/${fileName}`;
+      try {
+        progress.textContent = 'Upload en cours, veuillez patienter...';
+        const fileExt = file.name.split('.').pop();
+        const fileName = `media-${Date.now()}.${fileExt}`;
+        const filePath = `about/${fileName}`;
 
-      const { error } = await supabase.storage
-        .from('media')
-        .upload(filePath, file, { cacheControl: '3600', upsert: false });
+        const { error } = await supabase.storage
+          .from('media')
+          .upload(filePath, file, { cacheControl: '3600', upsert: false });
 
-      if (error) throw error;
+        if (error) throw error;
 
-      const { data: publicData } = supabase.storage.from('media').getPublicUrl(filePath);
+        const { data: publicData } = supabase.storage.from('media').getPublicUrl(filePath);
 
-      if (publicData?.publicUrl) {
-        urlVidInput.value = publicData.publicUrl;
-        progressVid.textContent = 'Upload réussi ! Cliquez sur "Enregistrer les réglages" ci-dessous.';
+        if (publicData?.publicUrl) {
+          target.value = publicData.publicUrl;
+          progress.textContent = 'Upload réussi ! Cliquez sur "Enregistrer" en bas.';
+        }
+      } catch (error: any) {
+        console.error(error);
+        progress.textContent = `Erreur: ${error.message}`;
       }
-    } catch (error: any) {
-      console.error(error);
-      progressVid.textContent = `Erreur: ${error.message}`;
-    }
-  });
+    });
+  }
 }
+
+setupUploader('btn-upload-vid', 'upload-about-vid', 'upload-progress-vid', 'set-about-vid');
+setupUploader('btn-upload-img', 'upload-about-img', 'upload-progress-img', 'set-about-img');
 
 // --- PROPERTIES LOGIC ---
 async function loadProperties() {

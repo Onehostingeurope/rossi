@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/admin-82-cptqn.js"></script>
+  <script type="module" crossorigin src="/assets/admin-BqAq74Ta.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/supabase-9tAm6vTQ.js">
   <link rel="stylesheet" crossorigin href="/assets/supabase-DUE8g3Gl.css">
   <link rel="stylesheet" crossorigin href="/assets/admin-BzI9O6hN.css">
@@ -69,9 +69,14 @@
             <textarea id="set-hero-subtitle" rows="3"></textarea>
           </div>
           
-          <div class="form-group">
+          <div class="form-group" style="position: relative;">
             <label for="set-about-img">Image "Notre Agence" (Lien de l'image)</label>
-            <input type="text" id="set-about-img" placeholder="e.g. assets/brigitte-v2.jpg">
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="set-about-img" placeholder="e.g. assets/brigitte-v2.jpg" style="flex: 1;">
+              <input type="file" id="upload-about-img" accept="image/*" style="display:none;" />
+              <button type="button" class="btn btn-outline" id="btn-upload-img" style="min-width: 100px;">Uploader</button>
+            </div>
+            <div id="upload-progress-img" style="font-size: 0.8rem; color: var(--admin-gold); margin-top: 5px;"></div>
           </div>
           <div class="form-group" style="position: relative;">
             <label for="set-about-vid">Vidéo "Notre Agence" (Lien MP4 - Joue au survol)</label>
