@@ -23,9 +23,9 @@ async function loadSiteSettings() {
       'hero-title-2': siteSettings.hero_title_2,
       'hero-title-3': siteSettings.hero_title_3,
       'hero-subtitle': siteSettings.hero_subtitle,
-      'stat-1-label': siteSettings.stat_1_label,
-      'stat-2-label': siteSettings.stat_2_label,
-      'stat-3-label': siteSettings.stat_3_label,
+      'stat-1-label': 'ANNÉES D\'EXPERTISE',
+      'stat-2-label': 'BIENS VENDUS',
+      'stat-3-label': '% CLIENTS SATISFAITS',
     };
 
     for (const [id, val] of Object.entries(updates)) {

@@ -106,11 +106,8 @@ function getElementIdForKey(key: string): string | null {
     'about_img': 'set-about-img',
     'about_vid': 'set-about-vid',
     'stat_1_val': 'set-stat1-val',
-    'stat_1_label': 'set-stat1-label',
     'stat_2_val': 'set-stat2-val',
-    'stat_2_label': 'set-stat2-label',
     'stat_3_val': 'set-stat3-val',
-    'stat_3_label': 'set-stat3-label',
   };
   return map[key] || null;
 }
@@ -128,11 +125,8 @@ settingsForm?.addEventListener('submit', async (e) => {
     { key: 'about_img', value: (document.getElementById('set-about-img') as HTMLInputElement).value },
     { key: 'about_vid', value: (document.getElementById('set-about-vid') as HTMLInputElement).value },
     { key: 'stat_1_val', value: (document.getElementById('set-stat1-val') as HTMLInputElement).value },
-    { key: 'stat_1_label', value: (document.getElementById('set-stat1-label') as HTMLInputElement).value },
     { key: 'stat_2_val', value: (document.getElementById('set-stat2-val') as HTMLInputElement).value },
-    { key: 'stat_2_label', value: (document.getElementById('set-stat2-label') as HTMLInputElement).value },
     { key: 'stat_3_val', value: (document.getElementById('set-stat3-val') as HTMLInputElement).value },
-    { key: 'stat_3_label', value: (document.getElementById('set-stat3-label') as HTMLInputElement).value },
   ];
 
   let hasError = false;
