@@ -60,14 +60,13 @@ async function loadSiteSettings() {
       const vid = document.createElement('video');
       vid.src = siteSettings.about_vid;
       vid.loop = true;
-      vid.muted = true;
+      vid.muted = false;
       vid.playsInline = true;
       // Styling it to sit perfectly on top of the image
+      vid.className = 'about-img';
       vid.style.position = 'absolute';
-      vid.style.inset = '0';
-      vid.style.width = '100%';
-      vid.style.height = '100%';
-      vid.style.objectFit = 'cover';
+      vid.style.top = '0';
+      vid.style.left = '0';
       vid.style.opacity = '0'; // Hidden initially
       vid.style.transition = 'opacity 0.4s ease';
       vid.style.pointerEvents = 'none'; // let mouse events pass to the wrap
