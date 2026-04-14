@@ -193,6 +193,62 @@ if (marqueeTrack) {
   });
 }
 
+/* ============================================================
+   SUPABASE FEATURED PROPERTIES
+   ============================================================ */
+
+async function fetchFeaturedProperties() {
+  try {
+    const { data, error } = await supabase
+      .from('properties')
+      .select('*')
+      .order('id', { ascending: false })
+      .limit(3);
+
+    if (error) throw error;
+    if (!data || data.length === 0) return;
+
+    // Featured Big Card
+    const main = data[0];
+    const featuredEl = document.getElementById('prop-featured');
+    if (featuredEl && main) {
+      featuredEl.querySelector('.prop-type').textContent = `${main.type} — ${main.quartier}`;
+      featuredEl.querySelector('.prop-name').textContent = main.title;
+      featuredEl.querySelector('.prop-detail').textContent = `${main.rooms} pièces · ${main.surface} m² · ${main.highlights.slice(0, 1)}`;
+      const btn = document.getElementById('prop-featured-btn');
+      if (btn) btn.href = main.url;
+    }
+
+    // Side Cards
+    const side1 = data[1];
+    const villaEl = document.getElementById('prop-villa');
+    if (villaEl && side1) {
+      villaEl.querySelector('.prop-card-type').textContent = `${side1.type} — ${side1.quartier}`;
+      villaEl.querySelector('.prop-card-name').textContent = side1.title;
+      villaEl.querySelector('.prop-card-detail').textContent = `${side1.surface} m² · ${side1.highlights.slice(0, 1)}`;
+      const btn = document.getElementById('prop-villa-btn');
+      if (btn) btn.href = side1.url;
+    }
+
+    const side2 = data[2];
+    const apptEl = document.getElementById('prop-appt');
+    if (apptEl && side2) {
+      apptEl.querySelector('.prop-card-type').textContent = `${side2.type} — ${side2.quartier}`;
+      apptEl.querySelector('.prop-card-name').textContent = side2.title;
+      apptEl.querySelector('.prop-card-detail').textContent = `${side2.surface} m² · ${side2.highlights.slice(0, 1)}`;
+      const btn = document.getElementById('prop-appt-btn');
+      if (btn) btn.href = side2.url;
+    }
+
+  } catch (err) {
+    console.error('Error fetching featured properties:', err.message);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchFeaturedProperties();
+});
+
 /* ---- Service cards stagger ---- */
 document.querySelectorAll('.service-card').forEach((card, i) => {
   card.style.transitionDelay = `${i * 0.07}s`;
