@@ -184,6 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initYouTube('4JvamYpPjSQ');
   loadSiteSettings();
   fetchFeaturedProperties();
+
+  // Re-instate Navbar Scroll Effect
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
 });
 
 /* ---- Service cards stagger ---- */

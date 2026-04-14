@@ -318,7 +318,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(10,10,10,0.5) 0%,
+    rgba(10,10,10,0.1) 0%,
     rgba(10,10,10,0.2) 30%,
     rgba(10,10,10,0.5) 60%,
     rgba(10,10,10,0.95) 100%
