@@ -1018,8 +1018,116 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   transition: color var(--transition);
 }
 .footer-socials a:hover { color: var(--gold); }
+ 
+/* ========== TALKING PORTRAIT FEATURE ========== */
+.talk-indicator {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+.about-image-wrap:hover .talk-indicator { opacity: 1; }
 
-/* ========== ANIMATIONS ========== */
+.talk-indicator span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.pulse-ring {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: relative;
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: audioPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes audioPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.about-speech-bubble {
+  position: absolute;
+  top: 15%;
+  left: 100%;
+  margin-left: 30px;
+  background: var(--white);
+  padding: 24px 32px;
+  width: 300px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 100;
+}
+
+.about-speech-bubble.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.bubble-content {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bubble-tail {
+  position: absolute;
+  top: 40px;
+  left: -12px;
+  width: 24px;
+  height: 24px;
+  background: var(--white);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+/* Adjust for smaller screens where the bubble might go off-screen */
+@media (max-width: 1400px) {
+  .about-speech-bubble {
+    left: 20px;
+    top: -100px;
+    margin-left: 0;
+    width: calc(100% - 40px);
+  }
+  .bubble-tail {
+    top: auto;
+    bottom: -8px;
+    left: 40px;
+    transform: rotate(45deg);
+  }
+}
+ 
+  /* ========== ANIMATIONS ========== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1074,9 +1182,48 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   .nav-link { font-size: 1rem; }
 
   /* Hero */
-  .hero-content { padding: 0 24px 200px; }
-  .hero-stats { width: 100%; justify-content: center; position: absolute; bottom: 0; right: 0; left: 0; }
-  .stat-item { padding: 0 20px; }
+  .hero { 
+    height: auto; 
+    min-height: auto; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .hero-bg { 
+    height: 100svh; 
+    position: absolute; 
+    top: 0; 
+    width: 100%;
+  }
+
+  .hero-content { 
+    position: relative;
+    padding: 0 24px; 
+    height: 100svh; 
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    z-index: 5;
+  }
+  .hero-stats { 
+    position: relative; 
+    width: 100%; 
+    background: var(--dark); 
+    backdrop-filter: none; 
+    padding: 80px 24px;
+    flex-direction: column; 
+    gap: 48px;
+    opacity: 1;
+    animation: none;
+    border: none;
+    border-top: 1px solid rgba(201,169,110,0.1);
+    z-index: 10;
+  }
+  .stat-item { border-bottom: 1px solid rgba(201,169,110,0.1); padding-bottom: 20px; width: 100%; }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-divider { display: none; }
   .hero-scroll { display: none; }
 
   /* Properties */
@@ -1110,11 +1257,11 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   .container { padding: 0 20px; }
   .navbar { padding: 20px; }
   .navbar.scrolled { padding: 14px 20px; }
-  .hero-content { padding: 0 20px 220px; }
-  .hero-title { font-size: clamp(2.8rem, 12vw, 5rem); }
-  .hero-actions { flex-direction: column; }
-  .hero-stats { flex-direction: column; gap: 16px; padding: 20px; }
-  .stat-divider { width: 40px; height: 1px; }
+  .hero-content { padding: 0 20px 80px; }
+  .hero-title { font-size: clamp(2.4rem, 10vw, 4rem); }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-stats { padding: 40px 20px; gap: 30px; }
   .form-row { grid-template-columns: 1fr; }
   .prop-side { grid-template-columns: 1fr; }
   .prop-card { height: 55vw; }

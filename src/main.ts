@@ -74,16 +74,29 @@ async function loadSiteSettings() {
 
       aboutWrap.appendChild(vid);
 
+      // Setup Subtitles/Bubble from quote
+      const bubble = document.getElementById('about-speech-bubble');
+      const bubbleContent = bubble?.querySelector('.bubble-content');
+      const quoteEl = document.querySelector('.about-quote');
+      if (bubbleContent && quoteEl) {
+        bubbleContent.textContent = quoteEl.textContent?.replace(/"/g, '') || "";
+      }
+
       // Play on hover
       aboutWrap.addEventListener('mouseenter', () => {
         vid.style.opacity = '1';
         vid.play().catch(() => {});
+        bubble?.classList.add('active');
+        // Stop any accidental AI speech synthesis
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
       });
 
       // Pause on leave
       aboutWrap.addEventListener('mouseleave', () => {
         vid.style.opacity = '0';
         vid.pause();
+        bubble?.classList.remove('active');
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
       });
     }
 
@@ -264,4 +277,3 @@ if (cursor) {
     el.addEventListener('mouseleave', () => cursorFollower?.classList.remove('active'));
   });
 }
-
