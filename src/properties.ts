@@ -50,26 +50,27 @@ function renderGrid(props: Property[]) {
 
 function buildCard(prop: Property, index: number): HTMLElement {
   const card = document.createElement('div');
-  card.className = 'prop-card scroll-reveal';
+  card.className = 'listing-card scroll-reveal';
   card.style.transitionDelay = `${(index % 3) * 0.1}s`;
   
   card.innerHTML = `
-    <a href="${prop.url}" class="prop-card-link" target="_blank" rel="noopener">
-      <div class="prop-card-img-wrap">
-        <div class="prop-card-gradient ${prop.gradient}"></div>
-        ${prop.prestige ? '<span class="prop-card-tag">Prestige</span>' : ''}
+    <a href="${prop.url}" class="card-link" target="_blank" rel="noopener" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+      <div class="card-img-wrap">
+        ${prop.image_url ? `<img src="${prop.image_url}" alt="${prop.title}" loading="lazy">` : `<div class="card-img-placeholder ${prop.gradient}"></div>`}
+        ${prop.prestige ? '<span class="card-prestige-badge">Prestige</span>' : ''}
+        <span class="card-type-badge">${prop.type}</span>
       </div>
-      <div class="prop-card-body">
-        <div class="prop-card-header">
-          <span class="prop-card-type">${prop.type}</span>
-          <span class="prop-card-price">${prop.price.toLocaleString()} €</span>
+      <div class="card-body">
+        <h3 class="card-title">${prop.title}</h3>
+        <p class="card-location">${prop.city}${prop.quartier && prop.quartier !== prop.city ? ` · ${prop.quartier}` : ''}</p>
+        <div class="card-specs">
+          <span class="card-spec">${prop.surface} m²</span>
+          <span class="card-spec">${prop.rooms} pièces</span>
+          <span class="card-spec">${prop.bedrooms} ch.</span>
         </div>
-        <h3 class="prop-card-title">${prop.title}</h3>
-        <p class="prop-card-location">${prop.city}${prop.quartier ? ` · ${prop.quartier}` : ''}</p>
-        <div class="prop-card-meta">
-          <span>${prop.surface} m²</span>
-          <span>${prop.rooms} pièces</span>
-          <span>${prop.bedrooms} ch.</span>
+        <div class="card-footer">
+          <span class="card-price">${prop.price.toLocaleString()} €</span>
+          <span class="card-cta">Découvrir <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </div>
       </div>
     </a>

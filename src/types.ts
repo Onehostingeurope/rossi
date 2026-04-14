@@ -13,6 +13,7 @@ export interface Property {
   highlights: string[];
   prestige: boolean;
   gradient: string;
+  image_url?: string;
 }
 
 export interface SiteSetting {
