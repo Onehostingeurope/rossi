@@ -205,25 +205,29 @@ async function loadProperties() {
       <td>${prop.price.toLocaleString()} €</td>
       <td>${prop.city}</td>
       <td>
-        <button class="btn-icon edit-btn">✎</button>
-        <button class="btn-icon delete delete-btn">✕</button>
+        <button class="btn-icon edit-btn" data-id="${prop.id}">✎</button>
+        <button class="btn-icon delete delete-btn" data-id="${prop.id}">✕</button>
       </td>
     `;
     
-    // Bind securely directly to the exact live node bypassing global lookup or inline CSP issues
-    const editBtn = tr.querySelector('.edit-btn');
-    const deleteBtn = tr.querySelector('.delete-btn');
-    
-    editBtn?.addEventListener('click', () => {
-      editProperty(prop.id!.toString());
-    });
-    deleteBtn?.addEventListener('click', () => {
-      deleteProperty(prop.id!.toString());
-    });
-
     propertiesList.appendChild(tr);
   });
 }
+
+// Guaranteed Root-Level Event Delegation (Bypasses any DOM re-render destructions)
+document.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement;
+  const deleteBtn = target.closest('.delete-btn');
+  const editBtn = target.closest('.edit-btn');
+
+  if (deleteBtn) {
+    const id = deleteBtn.getAttribute('data-id');
+    if (id) deleteProperty(id);
+  } else if (editBtn) {
+    const id = editBtn.getAttribute('data-id');
+    if (id) editProperty(id);
+  }
+});
 
 // Modal handling
 addPropertyBtn?.addEventListener('click', () => {
