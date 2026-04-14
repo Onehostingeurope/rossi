@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez cette propriété exclusive par Agence Rossi Croisette Immobilier.">
+  <title>Détails du bien | ROSSI Croisette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/property-CHqdoiHi.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/supabase-9tAm6vTQ.js">
+  <link rel="modulepreload" crossorigin href="/assets/main-BsLUBiiZ.js">
+  <link rel="stylesheet" crossorigin href="/assets/supabase-DUE8g3Gl.css">
+  <link rel="stylesheet" crossorigin href="/assets/property-CIpZAsqb.css">
+</head>
+<body>
+  
+  <div id="cursor" class="cursor"></div>
+
+  <!-- HEADER -->
+  <nav class="main-nav" id="mainNav">
+    <div class="nav-inner">
+      <div class="logo">
+        <a href="index.html">
+          ROSSI<br>
+          <span>CROISETTE · IMMOBILIER</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html#services">Services</a>
+        <a href="properties.html" class="active">Propriétés</a>
+        <a href="index.html#agence">Notre Agence</a>
+        <a href="index.html#contact" class="btn-outline">Nous Contacter</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOADING STATE -->
+  <div id="loading" class="property-loading">
+    <svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg>
+  </div>
+
+  <main id="property-main" style="display: none;">
+    <!-- HERO / MAIN IMAGE GALLERY -->
+    <section class="prop-hero">
+      <div class="prop-hero-gallery" id="hero-gallery">
+        <!-- Main Image injected here -->
+      </div>
+      <div class="prop-hero-overlay"></div>
+      
+      <!-- Back button -->
+      <a href="properties.html" class="prop-back-btn">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+         Retour
+      </a>
+
+      <!-- Gallery thumbnails -->
+      <div class="prop-thumbnails" id="prop-thumbnails">
+        <!-- Thumbnails injected here -->
+      </div>
+    </section>
+
+    <!-- CONTENT OVERVIEW -->
+    <section class="prop-content scroll-reveal">
+      <div class="prop-sidebar">
+        <!-- Mobile Header (shown only on small screens) -->
+        <div class="prop-header mobile-only">
+           <p class="prop-location" id="prop-location-mobile"></p>
+           <h1 class="prop-title" id="prop-title-mobile"></h1>
+           <p class="prop-price" id="prop-price-mobile"></p>
+        </div>
+
+        <div class="prop-specs-panel">
+          <h3 class="panel-title">Spécifications</h3>
+          <ul class="specs-list">
+            <li>
+               <span class="spec-label">Type</span>
+               <span class="spec-value" id="spec-type">...</span>
+            </li>
+            <li>
+               <span class="spec-label">Surface</span>
+               <span class="spec-value" id="spec-surface">...</span>
+            </li>
+            <li>
+               <span class="spec-label">Pièces</span>
+               <span class="spec-value" id="spec-rooms">...</span>
+            </li>
+            <li>
+               <span class="spec-label">Chambres</span>
+               <span class="spec-value" id="spec-bedrooms">...</span>
+            </li>
+          </ul>
+          <a href="index.html#contact" class="btn-solid prop-contact-btn">Demander des informations</a>
+        </div>
+      </div>
+
+      <div class="prop-details scroll-reveal">
+        <div class="prop-header desktop-only">
+           <p class="prop-location" id="prop-location"></p>
+           <h1 class="prop-title" id="prop-title">Chargement...</h1>
+           <p class="prop-price" id="prop-price"></p>
+        </div>
+        
+        <div class="prop-description-wrap">
+           <h3 class="panel-title section-title">À propos de ce bien</h3>
+           <div class="prop-description" id="prop-description"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>ROSSI</h3>
+        <p>CROISETTE · IMMOBILIER</p>
+      </div>
+      <div class="footer-contact">
+        <p>+33 (0)4 93 43 44 45</p>
+        <p>contact@agencerossicroisette.com</p>
+        <p>Cannes, France</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Agence Rossi Croisette Immobilier. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

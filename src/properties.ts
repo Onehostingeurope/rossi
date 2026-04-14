@@ -56,7 +56,7 @@ function buildCard(prop: Property, index: number): HTMLElement {
   card.style.transitionDelay = `${(index % 3) * 0.1}s`;
   
   card.innerHTML = `
-    <a href="${prop.url}" class="card-link" target="_blank" rel="noopener" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+    <a href="property.html?id=${prop.id}" class="card-link" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
       <div class="card-img-wrap">
         ${prop.image_url ? `<img src="${prop.image_url}" alt="${prop.title}" loading="lazy">` : `<div class="card-img-placeholder ${prop.gradient}"></div>`}
         ${prop.prestige ? '<span class="card-prestige-badge">Prestige</span>' : ''}

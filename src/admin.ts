@@ -248,9 +248,11 @@ async function editProperty(id: string) {
   (document.getElementById('prop-surface') as HTMLInputElement).value = data.surface.toString();
   (document.getElementById('prop-rooms') as HTMLInputElement).value = data.rooms.toString();
   (document.getElementById('prop-bedrooms') as HTMLInputElement).value = data.bedrooms.toString();
-  (document.getElementById('prop-url') as HTMLInputElement).value = data.url;
-  (document.getElementById('prop-desc') as HTMLTextAreaElement).value = data.description;
-  (document.getElementById('prop-highlights') as HTMLInputElement).value = data.highlights.join(', ');
+  (document.getElementById('prop-url') as HTMLInputElement).value = data.url || '';
+  (document.getElementById('prop-desc') as HTMLTextAreaElement).value = data.description || '';
+  (document.getElementById('prop-highlights') as HTMLInputElement).value = (data.highlights || []).join(', ');
+  const imagesEl = document.getElementById('prop-images') as HTMLInputElement;
+  if(imagesEl) imagesEl.value = (data.images || []).join(', ');
   (document.getElementById('prop-prestige') as HTMLSelectElement).value = data.prestige.toString();
   (document.getElementById('prop-gradient') as HTMLInputElement).value = data.gradient;
   
@@ -274,8 +276,13 @@ propertyForm?.addEventListener('submit', async (e) => {
     description: (document.getElementById('prop-desc') as HTMLTextAreaElement).value,
     highlights: (document.getElementById('prop-highlights') as HTMLInputElement).value.split(',').map(h => h.trim()).filter(h => h !== ''),
     prestige: (document.getElementById('prop-prestige') as HTMLSelectElement).value === 'true',
-    gradient: (document.getElementById('prop-gradient') as HTMLInputElement).value
+    gradient: (document.getElementById('prop-gradient') as HTMLInputElement).value,
+    images: ((document.getElementById('prop-images') as HTMLInputElement)?.value || '').split(',').map(i => i.trim()).filter(i => i !== '')
   };
+
+  if (payload.images && payload.images.length > 0) {
+     payload.image_url = payload.images[0];
+  }
   
   let result;
   if (idValue) {

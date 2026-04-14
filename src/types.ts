@@ -14,6 +14,7 @@ export interface Property {
   prestige: boolean;
   gradient: string;
   image_url?: string;
+  images?: string[];
 }
 
 export interface SiteSetting {
