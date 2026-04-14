@@ -14,7 +14,12 @@ async function fetchProperties() {
       .order('id', { ascending: false }) as { data: Property[] | null, error: any };
 
     if (error) throw error;
-    allProperties = data || [];
+    
+    // Auto-heal duplicate entries from overlapping migration scripts by keeping only the latest version of each URL
+    allProperties = (data || []).filter((prop, index, self) => 
+      prop.url && index === self.findIndex(t => t.url === prop.url)
+    );
+    
     filteredProperties = [...allProperties];
     
     if (loadingEl) loadingEl.style.display = 'none';
