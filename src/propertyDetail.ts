@@ -53,9 +53,31 @@ function renderProperty(prop: Property) {
     }
 
     const mainImgNode = document.createElement('img');
-    mainImgNode.className = 'prop-gallery-main-img';
+    mainImgNode.className = 'prop-gallery-main-img cursor-pointer';
     mainImgNode.src = images[0] || '';
     gallery.appendChild(mainImgNode);
+
+    // Lightbox container creation
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox hidden';
+    lightbox.innerHTML = `
+      <div class="lightbox-close">&times;</div>
+      <img class="lightbox-img" src="" alt="Full size" />
+    `;
+    document.body.appendChild(lightbox);
+
+    const lImg = lightbox.querySelector('.lightbox-img') as HTMLImageElement;
+    const lClose = lightbox.querySelector('.lightbox-close');
+
+    // Trigger Lightbox
+    mainImgNode.addEventListener('click', () => {
+      lImg.src = mainImgNode.src;
+      lightbox.classList.remove('hidden');
+    });
+    lClose?.addEventListener('click', () => lightbox.classList.add('hidden'));
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) lightbox.classList.add('hidden');
+    });
 
     if (images.length > 1) {
       images.forEach((imgSrc, idx) => {
