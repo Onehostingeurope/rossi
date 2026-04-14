@@ -47,11 +47,13 @@ async function loadSiteSettings() {
       }
     });
 
-    initYouTube(siteSettings.hero_video_id || '4JvamYpPjSQ');
+    // Optionally update video if Supabase has a different preference
+    if (siteSettings.hero_video_id && siteSettings.hero_video_id !== '4JvamYpPjSQ') {
+       // We don't overwrite if it's already playing, but we could if we wanted to be perfectly dynamic
+    }
 
   } catch (err: any) {
     console.error('Error loading site settings:', err.message);
-    initYouTube('4JvamYpPjSQ');
   }
 }
 
@@ -63,9 +65,9 @@ declare global {
   }
 }
 
+let ytPlayer: any;
 
-
-function initYouTube(videoId: string) {
+function initYouTube(videoId: string = '4JvamYpPjSQ') {
   if (window.YT && window.YT.Player) {
     createPlayer(videoId);
   } else {
@@ -74,7 +76,9 @@ function initYouTube(videoId: string) {
 }
 
 function createPlayer(videoId: string) {
-  new window.YT.Player('yt-player' , {
+  if (ytPlayer) return; // Prevent double initialization
+
+  ytPlayer = new window.YT.Player('yt-player', {
     videoId: videoId,
     playerVars: {
       autoplay: 1,
@@ -96,6 +100,9 @@ function createPlayer(videoId: string) {
       onReady: (e: any) => {
         e.target.mute();
         e.target.playVideo();
+        // Force fade out fallback immediately
+        const fallback = document.getElementById('hero-fallback');
+        if (fallback) fallback.classList.add('video-ready');
       },
       onStateChange: (e: any) => {
         if (e.data === window.YT.PlayerState.PLAYING) {
@@ -110,6 +117,7 @@ function createPlayer(videoId: string) {
     },
   });
 }
+
 
 /* ============================================================
    SUPABASE FEATURED PROPERTIES
@@ -173,6 +181,7 @@ async function fetchFeaturedProperties() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initYouTube('4JvamYpPjSQ');
   loadSiteSettings();
   fetchFeaturedProperties();
 });

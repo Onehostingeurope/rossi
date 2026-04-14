@@ -262,6 +262,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  background: var(--black);
 }
 .hero-bg {
   position: absolute;
@@ -317,10 +318,10 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(10,10,10,0.2) 0%,
-    rgba(10,10,10,0.1) 30%,
-    rgba(10,10,10,0.4) 60%,
-    rgba(10,10,10,0.92) 100%
+    rgba(10,10,10,0.5) 0%,
+    rgba(10,10,10,0.2) 30%,
+    rgba(10,10,10,0.5) 60%,
+    rgba(10,10,10,0.95) 100%
   );
 }
 .hero-grain {
@@ -545,7 +546,12 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
 .service-link:hover { letter-spacing: 0.25em; }
 
 /* ========== PROPERTIES ========== */
-.properties-section { background: var(--black); padding-bottom: 80px; }
+.properties-section { 
+  background: var(--black); 
+  padding-bottom: 160px; /* Increased bottom padding */
+  position: relative;
+  z-index: 5;
+}
 
 .properties-showcase {
   display: grid;
@@ -686,7 +692,13 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
 }
 
 /* ========== ABOUT ========== */
-.about-section { background: var(--light); overflow: hidden; }
+.about-section { 
+  background: var(--light); 
+  overflow: hidden; 
+  padding-top: 160px; /* Increased top padding to separate from properties */
+  position: relative;
+  z-index: 10; /* Ensure it stays above any property card overflow */
+}
 .about-section .section-eyebrow { color: var(--gold-dark); }
 .about-section .section-title { color: var(--dark); }
 
@@ -749,13 +761,38 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   line-height: 1.9;
   margin-bottom: 18px;
 }
-.about-badges { margin: 36px 0; display: flex; flex-direction: column; gap: 14px; }
-.about-badge-item {
-  display: flex; align-items: center; gap: 14px;
-  font-size: 0.85rem;
-  color: var(--dark);
+.about-badges { 
+  margin: 40px 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; 
 }
-.badge-icon { color: var(--gold-dark); font-size: 0.6rem; }
+.about-badge-item {
+  display: flex; 
+  align-items: center; 
+  gap: 16px;
+  font-size: 0.95rem;
+  color: var(--dark);
+  font-weight: 400;
+}
+.badge-icon { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  background: var(--gold-dark);
+  border-radius: 50%;
+  position: relative;
+}
+.badge-icon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--gold-dark);
+  border-radius: 50%;
+  opacity: 0.4;
+}
 .about-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
 
 /* ========== NEIGHBORHOODS ========== */

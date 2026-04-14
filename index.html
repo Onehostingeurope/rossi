@@ -224,7 +224,7 @@
   <section id="about" class="section about-section">
     <div class="about-inner">
       <div class="about-image-wrap" id="about-image">
-        <img src="brigitte.png" alt="Brigitte Rossi — Directrice Agence Rossi Croisette Immobilier" class="about-img" loading="lazy" />
+        <img src="brigitte.jpg" alt="Brigitte Rossi — Directrice Agence Rossi Croisette Immobilier" class="about-img" loading="lazy" />
         <div class="about-img-frame"></div>
         <div class="about-quote-card">
           <p class="about-quote">"Votre rêve est unique. Votre projet immobilier l'est également."</p>
@@ -469,6 +469,16 @@
   <script type="module" src="/src/main.ts"></script>
 
   <!-- YouTube IFrame API -->
+  <script>
+    // Early initialization to catch the YouTube API callback as soon as it loads
+    window.onYouTubeIframeAPIReady = function() {
+      // If the main.ts module hasn't loaded yet, it will overwrite this with a version that calls createPlayer.
+      // If it HAS loaded, it will define initYouTube.
+      if (typeof window.initYouTube === 'function') {
+        window.initYouTube();
+      }
+    };
+  </script>
   <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
