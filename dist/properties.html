@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos Biens à Vendre — Rossi Croisette Immobilier | Cannes</title>
+  <meta name="description" content="34 biens immobiliers de prestige à vendre à Cannes et sur la Côte d'Azur. Appartements, villas, maisons avec vue mer. Agence Rossi Croisette Immobilier." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/properties-Cg2YCOfg.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/supabase-CsOZGM-w.js">
+  <link rel="stylesheet" crossorigin href="/assets/properties-AbMK1H4L.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-1geJXkPV.css">
+</head>
+<body>
+
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-follower" class="cursor-follower"></div>
+
+  <!-- NAV -->
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" id="nav-logo-link">
+        <span class="logo-main">ROSSI</span>
+        <span class="logo-sub">CROISETTE · IMMOBILIER</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#services" class="nav-link" id="nav-services">Services</a></li>
+        <li><a href="/properties" class="nav-link" id="nav-properties" style="color:#C9A96E;">Propriétés</a></li>
+        <li><a href="/#about" class="nav-link" id="nav-about">Notre Agence</a></li>
+        <li><a href="/#contact" class="nav-link nav-link--cta" id="nav-contact">Nous Contacter</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="section-eyebrow">Sélection exclusive</p>
+      <h1 class="page-hero-title">Nos Biens<br><em>à Vendre</em></h1>
+      <p class="page-hero-sub">34 propriétés d'exception sur Cannes et la Côte d'Azur</p>
+    </div>
+    <div class="page-hero-bg"></div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters-bar" id="filters-bar">
+    <div class="filters-inner">
+      <div class="filter-group">
+        <label class="filter-label">Type de bien</label>
+        <div class="filter-pills" id="filter-type">
+          <button class="pill pill-active" data-filter="type" data-value="all" id="pill-all">Tous (34)</button>
+          <button class="pill" data-filter="type" data-value="Appartement" id="pill-appt">Appartement</button>
+          <button class="pill" data-filter="type" data-value="Villa" id="pill-villa">Villa</button>
+          <button class="pill" data-filter="type" data-value="Maison" id="pill-maison">Maison</button>
+          <button class="pill" data-filter="type" data-value="Rez de jardin" id="pill-rdj">Rez de jardin</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Budget max</label>
+        <div class="filter-pills" id="filter-price">
+          <button class="pill pill-active" data-filter="price" data-value="0" id="pill-price-all">Tous prix</button>
+          <button class="pill" data-filter="price" data-value="500000" id="pill-500k">≤ 500 000 €</button>
+          <button class="pill" data-filter="price" data-value="1000000" id="pill-1m">≤ 1M €</button>
+          <button class="pill" data-filter="price" data-value="2000000" id="pill-2m">≤ 2M €</button>
+          <button class="pill" data-filter="price" data-value="5000000" id="pill-5m">≤ 5M €</button>
+        </div>
+      </div>
+      <div class="filter-group filter-group--right">
+        <label class="filter-label">Trier par</label>
+        <select class="filter-select" id="sort-select">
+          <option value="recent">Les plus récents</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="surface-desc">Surface décroissante</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS COUNT -->
+  <div class="results-bar">
+    <div class="container">
+      <span class="results-count" id="results-count">34 biens trouvés</span>
+    </div>
+  </div>
+
+  <!-- PROPERTIES GRID -->
+  <section class="listings-section">
+    <div class="container">
+      <div class="listings-grid" id="listings-grid">
+        <!-- Cards injected by JS -->
+      </div>
+      <div class="no-results" id="no-results" style="display:none;">
+        <p>Aucun bien ne correspond à vos critères.</p>
+        <a href="https://www.agencerossicroisette.com/contact" target="_blank" class="btn btn-gold">Nous contacter pour une recherche personnalisée</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <div>
+        <h2 class="cta-banner-title">Vous ne trouvez pas votre bien idéal ?</h2>
+        <p class="cta-banner-sub">Créez une alerte personnalisée et soyez informé en premier dès qu'un bien correspond à vos critères.</p>
+      </div>
+      <div class="cta-banner-actions">
+        <a href="https://www.agencerossicroisette.com/alerte-email" target="_blank" rel="noopener" class="btn btn-gold" id="cta-alert-btn">Créer une alerte email</a>
+        <a href="/#contact" class="btn btn-ghost" id="cta-contact-btn">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (simplified) -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <span class="logo-main">ROSSI</span>
+          <span class="logo-sub">CROISETTE · IMMOBILIER</span>
+        </a>
+        <p class="footer-tagline">L'immobilier de prestige<br>sur la Côte d'Azur depuis 2016.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/properties" id="footer-vente-link">Vente</a></li>
+          <li><a href="https://www.agencerossicroisette.com/vente-neuf/1" target="_blank" id="footer-neuf-link">Programmes Neufs</a></li>
+          <li><a href="https://www.agencerossicroisette.com/location-vacances/1" target="_blank" id="footer-location-link">Location Saisonnière</a></li>
+          <li><a href="https://www.agencerossicroisette.com/estimation" target="_blank" id="footer-estim-link">Estimation</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0611308581" id="footer-tel-link">06 11 30 85 81</a></li>
+          <li><a href="mailto:rossibrigitte2a@gmail.com" id="footer-email-link">rossibrigitte2a@gmail.com</a></li>
+          <li><a href="/#contact" id="footer-contact-link">Formulaire de contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Rossi Croisette Immobilier — Tous droits réservés - Design OneHostingEurope</p>
+    </div>
+  </footer>
+
+</body>
+</html>

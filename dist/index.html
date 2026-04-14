@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rossi Croisette Immobilier — Prestige & Luxe à Cannes</title>
+  <meta name="description" content="Agence immobilière de prestige sur la Croisette à Cannes. Brigitte Rossi vous accompagne dans vos projets d'acquisition, vente et location saisonnière de biens d'exception sur la Côte d'Azur." />
+  <meta property="og:title" content="Rossi Croisette Immobilier — Prestige & Luxe à Cannes" />
+  <meta property="og:description" content="Agence immobilière de prestige sur la Croisette à Cannes. Vente, programmes neufs, location saisonnière et estimation." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/main-7tcviAlt.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/supabase-CsOZGM-w.js">
+  <link rel="stylesheet" crossorigin href="/assets/style-1geJXkPV.css">
+</head>
+<body>
+
+  <!-- ========== CURSOR ========== -->
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-follower" class="cursor-follower"></div>
+
+  <!-- ========== NAV ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" id="nav-logo-link">
+        <span class="logo-main">ROSSI</span>
+        <span class="logo-sub">CROISETTE · IMMOBILIER</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#services" class="nav-link" id="nav-services">Services</a></li>
+        <li><a href="/properties" class="nav-link" id="nav-properties">Propriétés</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">Notre Agence</a></li>
+        <li><a href="#contact" class="nav-link nav-link--cta" id="nav-contact">Nous Contacter</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <!-- YouTube Video Background -->
+      <div class="hero-video-wrap" id="hero-video-wrap">
+        <div id="yt-player"></div>
+      </div>
+      <!-- Fallback image while video loads -->
+      <img src="/assets/hero-BnhPAglU.png" alt="Cannes Croisette vue aérienne" class="hero-img hero-img-fallback" id="hero-fallback" />
+      <div class="hero-overlay"></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge">
+        <span class="badge-line"></span>
+        <span>Cannes · Côte d'Azur</span>
+        <span class="badge-line"></span>
+      </div>
+      <h1 class="hero-title" id="hero-title">
+        <span class="hero-title-line" id="hero-title-1">L'Immobilier</span>
+        <span class="hero-title-line hero-title-italic" id="hero-title-2">de Prestige</span>
+        <span class="hero-title-line" id="hero-title-3">sur la Croisette</span>
+      </h1>
+      <p class="hero-subtitle" id="hero-subtitle">
+        Depuis 2016, Brigitte Rossi vous ouvre les portes<br>
+        des plus belles propriétés de la Côte d'Azur.
+      </p>
+      <div class="hero-actions" id="hero-actions">
+        <a href="#properties" class="btn btn-gold" id="hero-btn-properties">Découvrir nos biens</a>
+        <a href="https://www.agencerossicroisette.com/estimation" target="_blank" rel="noopener" class="btn btn-ghost" id="hero-btn-estimate">Estimer mon bien</a>
+      </div>
+    </div>
+    <div class="hero-scroll" id="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Défiler</span>
+    </div>
+    <div class="hero-stats" id="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="stat-1-val" data-target="9">0</span>
+        <span class="stat-label" id="stat-1-label">Années d'expertise</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-2-val" data-target="350">0</span>
+        <span class="stat-label" id="stat-2-label">Biens vendus</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-3-val" data-target="98">0</span>
+        <span class="stat-label" id="stat-3-label">% clients satisfaits</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE ========== -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Cannes</span><span class="dot">✦</span>
+      <span>La Croisette</span><span class="dot">✦</span>
+      <span>Côte d'Azur</span><span class="dot">✦</span>
+      <span>Palm Beach</span><span class="dot">✦</span>
+      <span>Le Suquet</span><span class="dot">✦</span>
+      <span>La Californie</span><span class="dot">✦</span>
+      <span>Mandelieu</span><span class="dot">✦</span>
+      <span>Cannes</span><span class="dot">✦</span>
+      <span>La Croisette</span><span class="dot">✦</span>
+      <span>Côte d'Azur</span><span class="dot">✦</span>
+      <span>Palm Beach</span><span class="dot">✦</span>
+      <span>Le Suquet</span><span class="dot">✦</span>
+      <span>La Californie</span><span class="dot">✦</span>
+      <span>Mandelieu</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="section services-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Notre expertise</p>
+        <h2 class="section-title">Des services<br><em>sur mesure</em></h2>
+        <p class="section-desc">Une offre complète pour chaque étape de votre projet immobilier sur la Riviera française.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" id="service-vente">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 40V20L24 8L40 20V40H30V28H18V40H8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-title">Transaction Immobilière</h3>
+          <p class="service-text">Expertise du marché cannois pour sécuriser votre investissement. De l'Arrière-Croisette aux hauteurs de la Californie, nous maîtrisons chaque quartier.</p>
+          <a href="https://www.agencerossicroisette.com/vente/1" target="_blank" class="service-link" id="service-vente-link">Voir les biens →</a>
+        </div>
+        <div class="service-card service-card--featured" id="service-neuf">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="20" width="32" height="20" stroke="currentColor" stroke-width="1.5"/><path d="M16 20V12H32V20" stroke="currentColor" stroke-width="1.5"/><path d="M20 40V30H28V40" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="featured-badge">Exclusif</div>
+          <h3 class="service-title">Programmes Neufs</h3>
+          <p class="service-text">Une sélection exclusive de programmes neufs à Cannes. Prestations haut de gamme, performance énergétique optimale et fort potentiel de valorisation.</p>
+          <a href="https://www.agencerossicroisette.com/vente-neuf/1" target="_blank" class="service-link" id="service-neuf-link">Explorer →</a>
+        </div>
+        <div class="service-card" id="service-location">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 40C8 32 14.27 26 24 26C33.73 26 40 32 40 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="service-title">Location Saisonnière</h3>
+          <p class="service-text">Appartements de standing et villas d'exception. Rentabilité maximisée lors du Festival de Cannes, des congrès et de la saison estivale.</p>
+          <a href="https://www.agencerossicroisette.com/location-vacances/1" target="_blank" class="service-link" id="service-location-link">Louer →</a>
+        </div>
+        <div class="service-card" id="service-viager">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 8L42 30H6L24 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 30V40H32V30" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="service-title">Viager</h3>
+          <p class="service-text">Une approche confidentielle et professionnelle pour les transactions en viager. Conseil personnalisé pour vendeurs et acquéreurs.</p>
+          <a href="https://www.agencerossicroisette.com/vente/viager/1" target="_blank" class="service-link" id="service-viager-link">En savoir plus →</a>
+        </div>
+        <div class="service-card service-card--wide" id="service-estimation">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 24H32M24 16V32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="service-title">Estimation Gratuite</h3>
+          <p class="service-text">Connaissez la valeur exacte de votre bien grâce à notre étude comparative de marché. Basée sur les ventes récentes et le prix au m² à Cannes.</p>
+          <a href="https://www.agencerossicroisette.com/estimation" target="_blank" class="btn btn-gold btn-sm" id="service-estimation-link">Estimer mon bien</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED PROPERTIES ========== -->
+  <section id="properties" class="section properties-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Sélection exclusive</p>
+        <h2 class="section-title">Propriétés<br><em>d'Exception</em></h2>
+      </div>
+    </div>
+
+    <div class="properties-showcase">
+      <div class="prop-featured" id="prop-featured">
+        <img src="/assets/property1-DTXmavlV.png" alt="Penthouse vue mer Cannes Croisette" class="prop-img" loading="lazy" />
+        <div class="prop-overlay">
+          <div class="prop-tag">Coup de cœur</div>
+          <div class="prop-info">
+            <p class="prop-type">Appartement — Croisette</p>
+            <h3 class="prop-name">Penthouse Miramar</h3>
+            <p class="prop-detail">4 pièces · 121 m² · Vue mer panoramique</p>
+            <a href="https://www.agencerossicroisette.com/vente/1-cannes/appartement/128-a-vendre-cannes-croisette-le-relais-de-la-reine-4-pieces-121m2-prestige" target="_blank" rel="noopener" class="prop-btn" id="prop-featured-btn">Découvrir ce bien</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-side">
+        <div class="prop-card" id="prop-villa">
+          <img src="/assets/villa-DcLuZYzp.png" alt="Villa vue mer Cannes" class="prop-card-img" loading="lazy" />
+          <div class="prop-card-content">
+            <p class="prop-card-type">Villa — La Californie</p>
+            <h3 class="prop-card-name">Villa d'Exception</h3>
+            <p class="prop-card-detail">Vue mer · Piscine à débordement</p>
+            <a href="https://www.agencerossicroisette.com/vente/1-cannes/villa/1" target="_blank" rel="noopener" class="prop-card-link" id="prop-villa-btn">Voir →</a>
+          </div>
+        </div>
+
+        <div class="prop-card" id="prop-appt">
+          <img src="/assets/property1-DTXmavlV.png" alt="Appartement Croisette Cannes" class="prop-card-img prop-card-img--alt" loading="lazy" />
+          <div class="prop-card-content">
+            <p class="prop-card-type">Appartement — Arrière Croisette</p>
+            <h3 class="prop-card-name">Le Relais de la Reine</h3>
+            <p class="prop-card-detail">3 pièces · 127 m² · Terrasse</p>
+            <a href="https://www.agencerossicroisette.com/vente/1-cannes/appartement/129-cannes-croisette-appartement-3-pieces-a-vendre" target="_blank" rel="noopener" class="prop-card-link" id="prop-appt-btn">Voir →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="properties-cta">
+      <a href="properties.html" class="btn btn-outline-gold" id="btn-all-properties">
+        Consulter tous nos biens
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M10 4L16 10L10 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT / BRIGITTE ========== -->
+  <section id="about" class="section about-section">
+    <div class="about-inner">
+      <div class="about-image-wrap" id="about-image">
+        <img src="/assets/brigitte-v2-DiQ9T8LA.jpg" alt="Brigitte Rossi — Directrice Agence Rossi Croisette Immobilier" class="about-img" loading="lazy" />
+        <div class="about-img-frame"></div>
+        <div class="about-quote-card">
+          <p class="about-quote">"Votre rêve est unique. Votre projet immobilier l'est également."</p>
+          <span class="about-quote-author">— Brigitte Rossi</span>
+        </div>
+      </div>
+      <div class="about-content" id="about-content">
+        <p class="section-eyebrow">Notre agence</p>
+        <h2 class="section-title">L'expertise au service<br>de <em>votre projet</em></h2>
+        <p class="about-text">Installée depuis 2016 sur la Croisette, l'Agence Rossi Croisette Immobilier est née de la passion de Brigitte Rossi pour l'immobilier de prestige cannois.</p>
+        <p class="about-text">Notre positionnement unique au cœur de la baie de Cannes nous confère une connaissance incomparable du marché local — de Palm Beach au Suquet, de la Californie à la Croix des Gardes.</p>
+        <p class="about-text">Chaque dossier est traité avec la plus grande rigueur et discrétion. Nous plaçons systématiquement l'humain au centre de notre démarche.</p>
+        <div class="about-badges">
+          <div class="about-badge-item">
+            <span class="badge-icon"></span>
+            <span>Présence sur la Croisette depuis 2016</span>
+          </div>
+          <div class="about-badge-item">
+            <span class="badge-icon"></span>
+            <span>Réseau exclusif sur la Côte d'Azur</span>
+          </div>
+          <div class="about-badge-item">
+            <span class="badge-icon"></span>
+            <span>Expertise biens de prestige & viager</span>
+          </div>
+        </div>
+        <div class="about-actions">
+          <a href="https://www.agencerossicroisette.com/agence" target="_blank" rel="noopener" class="btn btn-gold" id="about-btn-agency">Notre histoire</a>
+          <a href="https://www.linkedin.com/in/brigitte-rossi-8607308b/" target="_blank" rel="noopener" class="btn btn-ghost-dark" id="about-btn-linkedin">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEIGHBORHOODS ========== -->
+  <section id="quartiers" class="section neighborhoods-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Nos secteurs</p>
+        <h2 class="section-title">Les quartiers<br><em>prisés de Cannes</em></h2>
+      </div>
+      <div class="neighborhoods-grid">
+        <a href="https://www.agencerossicroisette.com/vente/1-cannes/1" target="_blank" rel="noopener" class="neighborhood-item" id="qr-croisette">
+          <div class="neighborhood-num">01</div>
+          <div class="neighborhood-text">
+            <h3>La Croisette</h3>
+            <p>Le symbole du luxe cannois</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+        <a href="https://www.agencerossicroisette.com/vente/1-cannes/1" target="_blank" rel="noopener" class="neighborhood-item" id="qr-californie">
+          <div class="neighborhood-num">02</div>
+          <div class="neighborhood-text">
+            <h3>La Californie</h3>
+            <p>Villas et panoramas somptueux</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+        <a href="https://www.agencerossicroisette.com/vente/1-cannes/1" target="_blank" rel="noopener" class="neighborhood-item" id="qr-palmbeach">
+          <div class="neighborhood-num">03</div>
+          <div class="neighborhood-text">
+            <h3>Palm Beach</h3>
+            <p>Prestige et bord de mer</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+        <a href="https://www.agencerossicroisette.com/vente/1-cannes/1" target="_blank" rel="noopener" class="neighborhood-item" id="qr-suquet">
+          <div class="neighborhood-num">04</div>
+          <div class="neighborhood-text">
+            <h3>Le Suquet</h3>
+            <p>Charme du vieux Cannes</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+        <a href="https://www.agencerossicroisette.com/vente/1-cannes/1" target="_blank" rel="noopener" class="neighborhood-item" id="qr-croixgardes">
+          <div class="neighborhood-num">05</div>
+          <div class="neighborhood-text">
+            <h3>Croix des Gardes</h3>
+            <p>Résidentiel et verdure</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+        <a href="https://www.agencerossicroisette.com/vente/150-mandelieu-la-napoule" target="_blank" rel="noopener" class="neighborhood-item" id="qr-mandelieu">
+          <div class="neighborhood-num">06</div>
+          <div class="neighborhood-text">
+            <h3>Mandelieu-la-Napoule</h3>
+            <p>Naturel et golf de prestige</p>
+          </div>
+          <div class="neighborhood-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section contact-section">
+    <div class="contact-inner">
+      <div class="contact-content" id="contact-content">
+        <p class="section-eyebrow section-eyebrow--light">Nous sommes à votre écoute</p>
+        <h2 class="section-title section-title--light">Commençons votre<br><em>projet ensemble</em></h2>
+        <p class="contact-desc">Notre équipe est disponible du lundi au samedi pour vous accompagner dans chaque étape de votre projet immobilier.</p>
+        <div class="contact-details">
+          <a href="tel:0611308581" class="contact-item" id="contact-tel">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Téléphone</span>
+              <span class="contact-value">06 11 30 85 81</span>
+            </div>
+          </a>
+          <a href="mailto:rossibrigitte2a@gmail.com" class="contact-item" id="contact-email">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <span class="contact-value">rossibrigitte2a@gmail.com</span>
+            </div>
+          </a>
+          <div class="contact-item" id="contact-addr">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Adresse</span>
+              <span class="contact-value">La Croisette, Cannes 06400</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/brigitterossi06/" target="_blank" rel="noopener" class="social-btn" id="social-instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/RossiCroisetteImmobilier" target="_blank" rel="noopener" class="social-btn" id="social-facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/brigitte-rossi-8607308b/" target="_blank" rel="noopener" class="social-btn" id="social-linkedin" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@brigitterossiimmobilier" target="_blank" rel="noopener" class="social-btn" id="social-tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.28a8.18 8.18 0 004.78 1.52V7.35a4.85 4.85 0 01-1.01-.66z"/></svg>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <h3 class="form-title">Envoyez-nous un message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-nom">Nom *</label>
+            <input type="text" id="form-nom" name="nom" placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="form-prenom">Prénom *</label>
+            <input type="text" id="form-prenom" name="prenom" placeholder="Votre prénom" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="form-email">Email *</label>
+          <input type="email" id="form-email" name="email" placeholder="votre@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="form-tel">Téléphone</label>
+          <input type="tel" id="form-tel" name="tel" placeholder="+33 6 00 00 00 00" />
+        </div>
+        <div class="form-group">
+          <label for="form-sujet">Sujet *</label>
+          <select id="form-sujet" name="sujet" required>
+            <option value="" disabled selected>Choisissez un sujet</option>
+            <option value="achat">Achat / Vente</option>
+            <option value="location">Location saisonnière</option>
+            <option value="neuf">Programme neuf</option>
+            <option value="estimation">Estimation</option>
+            <option value="viager">Viager</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="form-message">Message *</label>
+          <textarea id="form-message" name="message" rows="4" placeholder="Décrivez votre projet immobilier..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block" id="form-submit">
+          <span>Envoyer le message</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 10L2.5 10M2.5 10L8.33 4.17M2.5 10L8.33 15.83" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="form-success" id="form-success">
+          <span>✦</span> Message envoyé avec succès ! Nous vous recontacterons très prochainement.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-main">ROSSI</span>
+          <span class="logo-sub">CROISETTE · IMMOBILIER</span>
+        </a>
+        <p class="footer-tagline">L'immobilier de prestige<br>sur la Côte d'Azur depuis 2016.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://www.agencerossicroisette.com/vente/1" target="_blank" id="footer-vente">Vente</a></li>
+          <li><a href="https://www.agencerossicroisette.com/vente-neuf/1" target="_blank" id="footer-neuf">Programmes Neufs</a></li>
+          <li><a href="https://www.agencerossicroisette.com/location-vacances/1" target="_blank" id="footer-location">Location Saisonnière</a></li>
+          <li><a href="https://www.agencerossicroisette.com/vente/viager/1" target="_blank" id="footer-viager">Viager</a></li>
+          <li><a href="https://www.agencerossicroisette.com/estimation" target="_blank" id="footer-estimation">Estimation</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Agence</h4>
+        <ul>
+          <li><a href="https://www.agencerossicroisette.com/agence" target="_blank" id="footer-about">Notre Agence</a></li>
+          <li><a href="https://www.agencerossicroisette.com/contact" target="_blank" id="footer-contact">Contact</a></li>
+          <li><a href="https://www.agencerossicroisette.com/alerte-email" target="_blank" id="footer-alerte">Alerte Email</a></li>
+          <li><a href="https://www.agencerossicroisette.com/admin/espace_client.php" target="_blank" id="footer-client">Espace Client</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="https://www.agencerossicroisette.com/docs/honoraires.pdf" target="_blank" id="footer-honoraires">Nos Honoraires</a></li>
+          <li><a href="https://www.agencerossicroisette.com/mentions-legales" target="_blank" id="footer-mentions">Mentions Légales</a></li>
+          <li><a href="https://www.la-boite-immo.com/politique-de-gestion-des-donnees-personnelles" target="_blank" id="footer-rgpd">Politique RGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Rossi Croisette Immobilier — Tous droits réservés - Design OneHostingEurope</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/brigitterossi06/" target="_blank" rel="noopener" aria-label="Instagram" id="footer-instagram">Instagram</a>
+        <a href="https://www.facebook.com/RossiCroisetteImmobilier" target="_blank" rel="noopener" aria-label="Facebook" id="footer-facebook">Facebook</a>
+        <a href="https://www.linkedin.com/in/brigitte-rossi-8607308b/" target="_blank" rel="noopener" aria-label="LinkedIn" id="footer-linkedin-footer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase & App Logic -->
+
+  <!-- YouTube IFrame API -->
+  <script>
+    // Early initialization to catch the YouTube API callback as soon as it loads
+    window.onYouTubeIframeAPIReady = function() {
+      // If the main.ts module hasn't loaded yet, it will overwrite this with a version that calls createPlayer.
+      // If it HAS loaded, it will define initYouTube.
+      if (typeof window.initYouTube === 'function') {
+        window.initYouTube();
+      }
+    };
+  </script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
