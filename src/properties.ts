@@ -40,7 +40,7 @@ function renderGrid(props: Property[]) {
   } else {
     if (noResults) noResults.style.display = 'none';
     if (count) count.textContent = `${props.length} biens trouvés`;
-  if (count) count.textContent = `${props.length} biens trouvés`;
+  }
 
   props.forEach((prop, i) => {
     const card = buildCard(prop, i);
