@@ -214,8 +214,8 @@ async function loadProperties() {
     const editBtn = tr.querySelector('.edit-btn');
     const deleteBtn = tr.querySelector('.delete-btn');
     
-    editBtn?.addEventListener('click', () => editProperty(prop.id.toString()));
-    deleteBtn?.addEventListener('click', () => deleteProperty(prop.id.toString()));
+    editBtn?.addEventListener('click', () => editProperty(prop.id!.toString()));
+    deleteBtn?.addEventListener('click', () => deleteProperty(prop.id!.toString()));
 
     propertiesList.appendChild(tr);
   });
