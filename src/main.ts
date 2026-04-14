@@ -63,7 +63,7 @@ declare global {
   }
 }
 
-let ytPlayer: any;
+
 
 function initYouTube(videoId: string) {
   if (window.YT && window.YT.Player) {
@@ -74,7 +74,7 @@ function initYouTube(videoId: string) {
 }
 
 function createPlayer(videoId: string) {
-  ytPlayer = new window.YT.Player('yt-player', {
+  new window.YT.Player('yt-player' , {
     videoId: videoId,
     playerVars: {
       autoplay: 1,

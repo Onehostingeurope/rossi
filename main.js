@@ -55,12 +55,12 @@ let ytPlayer;
 // Called automatically by the YouTube IFrame API once it is loaded
 window.onYouTubeIframeAPIReady = function () {
   ytPlayer = new YT.Player('yt-player', {
-    videoId: 'e0QDFQnvzBI',
+    videoId: '4JvamYpPjSQ',
     playerVars: {
       autoplay: 1,
       mute: 1,
       loop: 1,
-      playlist: 'e0QDFQnvzBI', // required for seamless loop
+      playlist: '4JvamYpPjSQ', // required for seamless loop
       controls: 0,
       showinfo: 0,
       rel: 0,
