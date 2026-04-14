@@ -99,6 +99,7 @@ function createPlayer(videoId: string) {
     events: {
       onReady: (e: any) => {
         e.target.mute();
+        e.target.setPlaybackQuality('hd1080'); // Force HD
         e.target.playVideo();
         // Force fade out fallback immediately
         const fallback = document.getElementById('hero-fallback');
@@ -203,3 +204,27 @@ document.querySelectorAll('.service-card').forEach((el, i) => {
   const card = el as HTMLElement;
   card.style.transitionDelay = `${i * 0.07}s`;
 });
+
+/* ---- Custom Cursor ---- */
+const cursor = document.getElementById('cursor');
+const cursorFollower = document.getElementById('cursor-follower');
+
+if (cursor && cursorFollower) {
+  let mouseX = 0;
+  let mouseY = 0;
+  
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    
+    // Smooth follower using requestAnimationFrame for better performance
+    cursorFollower.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  });
+
+  document.querySelectorAll('a, button, .service-card, .prop-card, .neighborhood-item').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorFollower.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
+  });
+}
+
