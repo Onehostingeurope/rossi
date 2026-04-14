@@ -47,9 +47,45 @@ async function loadSiteSettings() {
       }
     });
 
-    // Optionally update video if Supabase has a different preference
-    if (siteSettings.hero_video_id && siteSettings.hero_video_id !== '4JvamYpPjSQ') {
-       // We don't overwrite if it's already playing, but we could if we wanted to be perfectly dynamic
+    // Handle About Image & Video dynamically
+    const aboutImgNode = document.querySelector('.about-img') as HTMLImageElement;
+    const aboutWrap = document.getElementById('about-image');
+    
+    if (aboutImgNode && siteSettings.about_img) {
+      aboutImgNode.src = siteSettings.about_img;
+    }
+
+    if (aboutWrap && siteSettings.about_vid) {
+      // Create a native video element
+      const vid = document.createElement('video');
+      vid.src = siteSettings.about_vid;
+      vid.loop = true;
+      vid.muted = true;
+      vid.playsInline = true;
+      // Styling it to sit perfectly on top of the image
+      vid.style.position = 'absolute';
+      vid.style.inset = '0';
+      vid.style.width = '100%';
+      vid.style.height = '100%';
+      vid.style.objectFit = 'cover';
+      vid.style.opacity = '0'; // Hidden initially
+      vid.style.transition = 'opacity 0.4s ease';
+      vid.style.pointerEvents = 'none'; // let mouse events pass to the wrap
+      vid.style.zIndex = '1';
+
+      aboutWrap.appendChild(vid);
+
+      // Play on hover
+      aboutWrap.addEventListener('mouseenter', () => {
+        vid.style.opacity = '1';
+        vid.play().catch(() => {});
+      });
+
+      // Pause on leave
+      aboutWrap.addEventListener('mouseleave', () => {
+        vid.style.opacity = '0';
+        vid.pause();
+      });
     }
 
   } catch (err: any) {

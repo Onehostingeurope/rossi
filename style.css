@@ -736,6 +736,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   background: var(--gold);
   padding: 28px 32px;
   max-width: 300px;
+  z-index: 10;
 }
 .about-quote {
   font-family: var(--font-serif);
