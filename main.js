@@ -192,6 +192,118 @@ if (marqueeTrack) {
     marqueeTrack.style.animationPlayState = 'running';
   });
 }
+/* ============================================================
+   SUPABASE SITE SETTINGS
+   ============================================================ */
+
+let siteSettings = {};
+
+async function loadSiteSettings() {
+  try {
+    const { data, error } = await supabase.from('site_settings').select('*');
+    if (error) throw error;
+    
+    data.forEach(item => {
+      siteSettings[item.key] = item.value;
+    });
+
+    // Apply text settings
+    const updates = {
+      'hero-title-1': siteSettings.hero_title_1,
+      'hero-title-2': siteSettings.hero_title_2,
+      'hero-title-3': siteSettings.hero_title_3,
+      'hero-subtitle': siteSettings.hero_subtitle,
+      'stat-1-label': siteSettings.stat_1_label,
+      'stat-2-label': siteSettings.stat_2_label,
+      'stat-3-label': siteSettings.stat_3_label,
+    };
+
+    for (const [id, val] of Object.entries(updates)) {
+      const el = document.getElementById(id);
+      if (el && val) el.textContent = val;
+    }
+
+    // Apply stats values (updating data-target for the animation)
+    const stats = [
+      { id: 'stat-1-val', key: 'stat_1_val' },
+      { id: 'stat-2-val', key: 'stat_2_val' },
+      { id: 'stat-3-val', key: 'stat_3_val' },
+    ];
+
+    stats.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el && siteSettings[s.key]) {
+        el.setAttribute('data-target', siteSettings[s.key]);
+      }
+    });
+
+    // Initialize YouTube after settings are loaded (or if they fail)
+    initYouTube(siteSettings.hero_video_id || 'e0QDFQnvzBI');
+
+  } catch (err) {
+    console.error('Error loading site settings:', err.message);
+    initYouTube('e0QDFQnvzBI'); // Fallback
+  }
+}
+
+/* ---- YouTube Background Video ---- */
+let ytPlayer;
+
+function initYouTube(videoId) {
+  // If API already loaded, just create player
+  if (window.YT && window.YT.Player) {
+    createPlayer(videoId);
+  } else {
+    // API will call onYouTubeIframeAPIReady
+    window.onYouTubeIframeAPIReady = () => createPlayer(videoId);
+  }
+}
+
+function createPlayer(videoId) {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: videoId,
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      loop: 1,
+      playlist: videoId,
+      controls: 0,
+      showinfo: 0,
+      rel: 0,
+      modestbranding: 1,
+      iv_load_policy: 3,
+      disablekb: 1,
+      fs: 0,
+      cc_load_policy: 0,
+      playsinline: 1,
+      enablejsapi: 1,
+    },
+    events: {
+      onReady: (e) => {
+        e.target.mute();
+        e.target.playVideo();
+      },
+      onStateChange: (e) => {
+        if (e.data === YT.PlayerState.PLAYING) {
+          const fallback = document.getElementById('hero-fallback');
+          if (fallback) fallback.classList.add('video-ready');
+        }
+        if (e.data === YT.PlayerState.ENDED) {
+          e.target.seekTo(0);
+          e.target.playVideo();
+        }
+      },
+    },
+  });
+}
+
+// Re-map the existing onYouTubeIframeAPIReady to something that doesn't conflict
+// if the tag script loads faster than loadSiteSettings
+window.onYouTubeIframeAPIReady = () => {
+  if (siteSettings.hero_video_id) {
+    createPlayer(siteSettings.hero_video_id);
+  }
+};
 
 /* ============================================================
    SUPABASE FEATURED PROPERTIES
@@ -214,7 +326,7 @@ async function fetchFeaturedProperties() {
     if (featuredEl && main) {
       featuredEl.querySelector('.prop-type').textContent = `${main.type} — ${main.quartier}`;
       featuredEl.querySelector('.prop-name').textContent = main.title;
-      featuredEl.querySelector('.prop-detail').textContent = `${main.rooms} pièces · ${main.surface} m² · ${main.highlights.slice(0, 1)}`;
+      featuredEl.querySelector('.prop-detail').textContent = `${main.rooms} pièces · ${main.surface} m² · ${main.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-featured-btn');
       if (btn) btn.href = main.url;
     }
@@ -225,7 +337,7 @@ async function fetchFeaturedProperties() {
     if (villaEl && side1) {
       villaEl.querySelector('.prop-card-type').textContent = `${side1.type} — ${side1.quartier}`;
       villaEl.querySelector('.prop-card-name').textContent = side1.title;
-      villaEl.querySelector('.prop-card-detail').textContent = `${side1.surface} m² · ${side1.highlights.slice(0, 1)}`;
+      villaEl.querySelector('.prop-card-detail').textContent = `${side1.surface} m² · ${side1.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-villa-btn');
       if (btn) btn.href = side1.url;
     }
@@ -235,7 +347,7 @@ async function fetchFeaturedProperties() {
     if (apptEl && side2) {
       apptEl.querySelector('.prop-card-type').textContent = `${side2.type} — ${side2.quartier}`;
       apptEl.querySelector('.prop-card-name').textContent = side2.title;
-      apptEl.querySelector('.prop-card-detail').textContent = `${side2.surface} m² · ${side2.highlights.slice(0, 1)}`;
+      apptEl.querySelector('.prop-card-detail').textContent = `${side2.surface} m² · ${side2.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-appt-btn');
       if (btn) btn.href = side2.url;
     }
@@ -246,6 +358,7 @@ async function fetchFeaturedProperties() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadSiteSettings();
   fetchFeaturedProperties();
 });
 

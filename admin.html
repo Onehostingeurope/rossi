@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rossi Admin — Dashboard</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  
+  <!-- LOGIN MODAL -->
+  <div id="login-overlay" class="admin-overlay">
+    <div class="login-card">
+      <h2 class="playfair">Accès Admin</h2>
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Mot de passe" required>
+        <button type="submit" class="btn btn-gold">Se connecter</button>
+        <div id="login-error" class="error-msg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD NAV -->
+  <header class="admin-header">
+    <div class="container container--admin">
+      <div class="admin-logo">
+        <span class="playfair">Rossi</span> <span class="light">Admin</span>
+      </div>
+      <nav class="admin-nav">
+        <button class="nav-btn active" data-tab="tab-settings">Réglages Site</button>
+        <button class="nav-btn" data-tab="tab-properties">Biens Immobiliers</button>
+        <button id="logout-btn" class="btn-logout">Déconnexion</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-main container container--admin">
+    
+    <!-- SETTINGS TAB -->
+    <section id="tab-settings" class="admin-tab active">
+      <h2 class="playfair section-title">Réglages du Site</h2>
+      <form id="settings-form" class="admin-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="set-video-id">ID Vidéo Background (YouTube)</label>
+            <input type="text" id="set-video-id" placeholder="e.g. e0QDFQnvzBI">
+          </div>
+          <div class="form-group">
+            <label for="set-hero-title-1">Hero Titre (Ligne 1)</label>
+            <input type="text" id="set-hero-title-1">
+          </div>
+          <div class="form-group">
+            <label for="set-hero-title-2">Hero Titre 2 (Italique)</label>
+            <input type="text" id="set-hero-title-2">
+          </div>
+          <div class="form-group">
+            <label for="set-hero-title-3">Hero Titre 3</label>
+            <input type="text" id="set-hero-title-3">
+          </div>
+          <div class="form-group wide">
+            <label for="set-hero-subtitle">Hero Sous-titre</label>
+            <textarea id="set-hero-subtitle" rows="3"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="set-stat1-val">Stat 1 Valeur</label>
+            <input type="text" id="set-stat1-val">
+          </div>
+          <div class="form-group">
+            <label for="set-stat1-label">Stat 1 Label</label>
+            <input type="text" id="set-stat1-label">
+          </div>
+          <div class="form-group">
+            <label for="set-stat2-val">Stat 2 Valeur</label>
+            <input type="text" id="set-stat2-val">
+          </div>
+          <div class="form-group">
+            <label for="set-stat2-label">Stat 2 Label</label>
+            <input type="text" id="set-stat2-label">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold">Enregistrer les réglages</button>
+          <span id="settings-status" class="status-msg"></span>
+        </div>
+      </form>
+    </section>
+
+    <!-- PROPERTIES TAB -->
+    <section id="tab-properties" class="admin-tab">
+      <div class="section-header--admin">
+        <h2 class="playfair section-title">Gestion des Biens</h2>
+        <button id="add-property-btn" class="btn btn-gold">+ Ajouter un bien</button>
+      </div>
+      
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Titre</th>
+              <th>Prix</th>
+              <th>Ville</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="properties-list">
+            <!-- Dynamic items -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROPERTY MODAL -->
+  <div id="property-modal" class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="modal-title" class="playfair">Nouveau bien</h2>
+      <form id="property-form" class="admin-form">
+        <input type="hidden" id="prop-id">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Type</label>
+            <input type="text" id="prop-type" required placeholder="Appartement, Villa...">
+          </div>
+          <div class="form-group">
+            <label>Titre</label>
+            <input type="text" id="prop-title" required>
+          </div>
+          <div class="form-group">
+            <label>Prix (€)</label>
+            <input type="number" id="prop-price" required>
+          </div>
+          <div class="form-group">
+            <label>Ville</label>
+            <input type="text" id="prop-city" required>
+          </div>
+          <div class="form-group">
+            <label>Quartier</label>
+            <input type="text" id="prop-quartier">
+          </div>
+          <div class="form-group">
+            <label>Surface (m²)</label>
+            <input type="number" step="0.01" id="prop-surface">
+          </div>
+          <div class="form-group">
+            <label>Pièces</label>
+            <input type="number" id="prop-rooms">
+          </div>
+          <div class="form-group">
+            <label>Chambres</label>
+            <input type="number" id="prop-bedrooms">
+          </div>
+          <div class="form-group wide">
+            <label>Lien agencerossicroisette.com</label>
+            <input type="url" id="prop-url">
+          </div>
+          <div class="form-group wide">
+            <label>Description (Markdown autorisé)</label>
+            <textarea id="prop-desc" rows="4"></textarea>
+          </div>
+          <div class="form-group wide">
+            <label>Points forts (séparés par des virgules)</label>
+            <input type="text" id="prop-highlights">
+          </div>
+          <div class="form-group">
+            <label>Prestige</label>
+            <select id="prop-prestige">
+              <option value="false">Non</option>
+              <option value="true">Oui</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Gradient (grad-1 to grad-6)</label>
+            <input type="text" id="prop-gradient" value="grad-1">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold">Enregistrer</button>
+          <button type="button" class="btn btn-outline" id="cancel-modal">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
