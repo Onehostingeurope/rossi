@@ -330,7 +330,8 @@
   flex-wrap: wrap;
 }
 .energy-chart {
-  max-width: 100%;
+  max-width: 260px;
+  height: auto;
   border-radius: 4px;
   background: white; /* Graphs are usually on white background natively */
   padding: 10px;
