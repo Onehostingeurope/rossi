@@ -205,17 +205,21 @@ async function loadProperties() {
       <td>${prop.price.toLocaleString()} €</td>
       <td>${prop.city}</td>
       <td>
-        <button class="btn-icon edit-btn" onclick="window.editProperty('${prop.id}')">✎</button>
-        <button class="btn-icon delete delete-btn" onclick="window.deleteProperty('${prop.id}')">✕</button>
+        <button class="btn-icon edit-btn">✎</button>
+        <button class="btn-icon delete delete-btn">✕</button>
       </td>
     `;
+    
+    // Bind securely directly to the exact live node bypassing global lookup or inline CSP issues
+    const editBtn = tr.querySelector('.edit-btn');
+    const deleteBtn = tr.querySelector('.delete-btn');
+    
+    editBtn?.addEventListener('click', () => editProperty(prop.id.toString()));
+    deleteBtn?.addEventListener('click', () => deleteProperty(prop.id.toString()));
+
     propertiesList.appendChild(tr);
   });
 }
-
-// Attach globally for inline HTML execution
-(window as any).deleteProperty = deleteProperty;
-(window as any).editProperty = editProperty;
 
 // Modal handling
 addPropertyBtn?.addEventListener('click', () => {
