@@ -100,6 +100,55 @@ function renderProperty(prop: Property) {
   setContent('spec-bedrooms', `${prop.bedrooms}`);
 
   setContent('prop-description', prop.description || 'Description non disponible.');
+
+  // Map Features
+  if (prop.features && prop.features.length > 0) {
+     const wrap = document.getElementById('prop-features-wrap');
+     const ul = document.getElementById('prop-features');
+     if (wrap && ul) {
+        wrap.classList.remove('hidden');
+        prop.features.forEach(f => {
+           const li = document.createElement('li');
+           li.textContent = f;
+           ul.appendChild(li);
+        });
+     }
+  }
+
+  // Builder for tables
+  const buildTable = (data: {label: string, value: string}[] | undefined, cardId: string, listId: string) => {
+     if (data && data.length > 0) {
+        const card = document.getElementById(cardId);
+        const ul = document.getElementById(listId);
+        if (card && ul) {
+           card.classList.remove('hidden');
+           data.forEach(item => {
+              const li = document.createElement('li');
+              li.innerHTML = `<span>${item.label}</span><span>${item.value}</span>`;
+              ul.appendChild(li);
+           });
+        }
+     }
+  };
+
+  buildTable(prop.composition, 'prop-comp-card', 'prop-comp-list');
+  buildTable(prop.copro, 'prop-copro-card', 'prop-copro-list');
+  buildTable(prop.financial, 'prop-fin-card', 'prop-fin-list');
+
+  // Energy
+  if (prop.dpe_image || prop.ges_image) {
+     const engWrap = document.getElementById('prop-energy-group');
+     if (engWrap) engWrap.classList.remove('hidden');
+     
+     if (prop.dpe_image) {
+       const img = document.getElementById('dpe-img') as HTMLImageElement;
+       if (img) { img.src = prop.dpe_image; img.classList.remove('hidden'); }
+     }
+     if (prop.ges_image) {
+       const img = document.getElementById('ges-img') as HTMLImageElement;
+       if (img) { img.src = prop.ges_image; img.classList.remove('hidden'); }
+     }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initPropertyPage);

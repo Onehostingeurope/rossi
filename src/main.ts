@@ -181,7 +181,7 @@ async function fetchFeaturedProperties() {
       if (nameEl) nameEl.textContent = main.title;
       if (detailEl) detailEl.textContent = `${main.rooms} pièces · ${main.surface} m² · ${main.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-featured-btn') as HTMLAnchorElement;
-      if (btn) btn.href = main.url;
+      if (btn) btn.href = main.url || '#';
     }
 
     // Side Cards
@@ -195,20 +195,20 @@ async function fetchFeaturedProperties() {
       if (nameEl) nameEl.textContent = side1.title;
       if (detailEl) detailEl.textContent = `${side1.surface} m² · ${side1.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-villa-btn') as HTMLAnchorElement;
-      if (btn) btn.href = side1.url;
+      if (btn) btn.href = side1.url || '#';
     }
 
     const side2 = data[2];
-    const apptEl = document.getElementById('prop-appt');
-    if (apptEl && side2) {
-      const typeEl = apptEl.querySelector('.prop-card-type');
-      const nameEl = apptEl.querySelector('.prop-card-name');
-      const detailEl = apptEl.querySelector('.prop-card-detail');
+    const side2El = document.getElementById('prop-appt');
+    if (side2El && side2) {
+      const typeEl = side2El.querySelector('.prop-card-type');
+      const nameEl = side2El.querySelector('.prop-card-name');
+      const detailEl = side2El.querySelector('.prop-card-detail');
       if (typeEl) typeEl.textContent = `${side2.type} — ${side2.quartier}`;
       if (nameEl) nameEl.textContent = side2.title;
       if (detailEl) detailEl.textContent = `${side2.surface} m² · ${side2.highlights?.[0] || 'Détails'}`;
       const btn = document.getElementById('prop-appt-btn') as HTMLAnchorElement;
-      if (btn) btn.href = side2.url;
+      if (btn) btn.href = side2.url || '#';
     }
 
   } catch (err: any) {

@@ -1,20 +1,26 @@
 export interface Property {
   id?: number;
   type: string;
-  title: string;
-  price: number;
-  city: string;
-  quartier: string;
-  surface: number;
   rooms: number;
   bedrooms: number;
-  url: string;
+  surface: number;
+  city: string;
+  quartier: string;
+  price: number;
+  title: string;
   description: string;
-  highlights: string[];
-  prestige: boolean;
-  gradient: string;
+  highlights?: string[];
+  url?: string;
   image_url?: string;
   images?: string[];
+  gradient: string;
+  prestige: boolean;
+  features?: string[];
+  composition?: {label: string, value: string}[];
+  copro?: {label: string, value: string}[];
+  financial?: {label: string, value: string}[];
+  dpe_image?: string;
+  ges_image?: string;
 }
 
 export interface SiteSetting {
