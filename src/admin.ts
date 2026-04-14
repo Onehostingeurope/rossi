@@ -215,11 +215,9 @@ async function loadProperties() {
     const deleteBtn = tr.querySelector('.delete-btn');
     
     editBtn?.addEventListener('click', () => {
-      alert('EDIT CLICK FIRED! ID: ' + prop.id);
       editProperty(prop.id!.toString());
     });
     deleteBtn?.addEventListener('click', () => {
-      alert('DELETE CLICK FIRED! ID: ' + prop.id);
       deleteProperty(prop.id!.toString());
     });
 
