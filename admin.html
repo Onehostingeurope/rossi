@@ -71,9 +71,14 @@
             <label for="set-about-img">Image "Notre Agence" (Lien de l'image)</label>
             <input type="text" id="set-about-img" placeholder="e.g. assets/brigitte-v2.jpg">
           </div>
-          <div class="form-group">
+          <div class="form-group" style="position: relative;">
             <label for="set-about-vid">Vidéo "Notre Agence" (Lien MP4 - Joue au survol)</label>
-            <input type="text" id="set-about-vid" placeholder="Lien vers fichier .mp4">
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="set-about-vid" placeholder="Lien vers fichier .mp4" style="flex: 1;">
+              <input type="file" id="upload-about-vid" accept="video/mp4,video/webm" style="display:none;" />
+              <button type="button" class="btn btn-outline" id="btn-upload-vid" style="min-width: 100px;">Uploader</button>
+            </div>
+            <div id="upload-progress-vid" style="font-size: 0.8rem; color: var(--admin-gold); margin-top: 5px;"></div>
           </div>
           
           <div class="form-group">
