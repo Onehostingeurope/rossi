@@ -1184,21 +1184,23 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   /* Hero */
   .hero { 
     height: auto; 
-    min-height: auto; 
+    min-height: 100svh; 
     flex-direction: column; 
-    align-items: center; 
+    align-items: center;
+    overflow: visible;
   }
   .hero-bg { 
     height: 100svh; 
-    position: absolute; 
+    position: fixed; /* Keep video fixed while titles scroll? Or keep it absolute in a specific container. */
     top: 0; 
     width: 100%;
+    z-index: 1;
   }
 
   .hero-content { 
     position: relative;
-    padding: 0 24px; 
-    height: 100svh; 
+    padding: 20px; 
+    min-height: 100svh; 
     width: 100%;
     display: flex; 
     flex-direction: column; 
@@ -1210,16 +1212,13 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   .hero-stats { 
     position: relative; 
     width: 100%; 
-    background: var(--dark); 
-    backdrop-filter: none; 
-    padding: 80px 24px;
+    background: #0a0a0a; 
+    padding: 100px 24px;
     flex-direction: column; 
-    gap: 48px;
-    opacity: 1;
-    animation: none;
-    border: none;
-    border-top: 1px solid rgba(201,169,110,0.1);
+    gap: 60px;
     z-index: 10;
+    margin-top: 0;
+    border-top: 1px solid rgba(201,169,110,0.1);
   }
   .stat-item { border-bottom: 1px solid rgba(201,169,110,0.1); padding-bottom: 20px; width: 100%; }
   .stat-item:last-child { border-bottom: none; }
