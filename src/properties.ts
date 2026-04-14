@@ -26,12 +26,20 @@ async function fetchProperties() {
 }
 
 // --- RENDER ENGINE ---
-const grid = document.getElementById('properties-grid');
+const grid = document.getElementById('listings-grid');
 const count = document.getElementById('results-count');
+const noResults = document.getElementById('no-results');
 
 function renderGrid(props: Property[]) {
   if (!grid) return;
   grid.innerHTML = '';
+  
+  if (props.length === 0) {
+    if (noResults) noResults.style.display = 'block';
+    if (count) count.textContent = '0 biens trouvés';
+  } else {
+    if (noResults) noResults.style.display = 'none';
+    if (count) count.textContent = `${props.length} biens trouvés`;
   if (count) count.textContent = `${props.length} biens trouvés`;
 
   props.forEach((prop, i) => {
@@ -70,25 +78,29 @@ function buildCard(prop: Property, index: number): HTMLElement {
 }
 
 // --- FILTER & SORT LOGIC ---
-const typeFilter = document.getElementById('filter-type') as HTMLSelectElement;
-const priceSort = document.getElementById('sort-price') as HTMLSelectElement;
+const typePills = document.querySelectorAll('#filter-type .pill');
+const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+
+let currentTypeFilter = 'all';
 
 function applyFiltersAndSort() {
-  const type = typeFilter?.value || 'all';
-  const sort = priceSort?.value || 'default';
+  const sort = sortSelect?.value || 'recent';
 
   // Filter
   filteredProperties = allProperties.filter(p => {
-    if (type === 'all') return true;
-    return p.type.toLowerCase().includes(type.toLowerCase());
+    if (currentTypeFilter === 'all') return true;
+    return p.type.toLowerCase().includes(currentTypeFilter.toLowerCase());
   });
 
   // Sort
-  if (sort === 'asc') {
+  if (sort === 'price-asc') {
     filteredProperties.sort((a, b) => a.price - b.price);
-  } else if (sort === 'desc') {
+  } else if (sort === 'price-desc') {
     filteredProperties.sort((a, b) => b.price - a.price);
+  } else if (sort === 'surface-desc') {
+    filteredProperties.sort((a, b) => b.surface - a.surface);
   } else {
+    // recent
     filteredProperties.sort((a, b) => (b.id || 0) - (a.id || 0));
   }
 
@@ -96,8 +108,17 @@ function applyFiltersAndSort() {
 }
 
 // Event Listeners
-typeFilter?.addEventListener('change', applyFiltersAndSort);
-priceSort?.addEventListener('change', applyFiltersAndSort);
+typePills.forEach(pill => {
+  pill.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    typePills.forEach(p => p.classList.remove('pill-active'));
+    target.classList.add('pill-active');
+    currentTypeFilter = target.getAttribute('data-value') || 'all';
+    applyFiltersAndSort();
+  });
+});
+
+sortSelect?.addEventListener('change', applyFiltersAndSort);
 
 // Initialize
 document.addEventListener('DOMContentLoaded', fetchProperties);
