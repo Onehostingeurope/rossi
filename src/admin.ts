@@ -286,7 +286,8 @@ propertyForm?.addEventListener('submit', async (e) => {
   
   let result;
   if (idValue) {
-    result = await supabase.from('properties').update(payload).eq('id', idValue);
+    const numId = parseInt(idValue, 10);
+    result = await supabase.from('properties').update(payload).eq('id', numId);
   } else {
     result = await supabase.from('properties').insert([payload]);
   }
@@ -299,11 +300,23 @@ propertyForm?.addEventListener('submit', async (e) => {
   }
 });
 
-async function deleteProperty(id: string) {
-  if (confirm('Êtes-vous sûr de vouloir supprimer ce bien ?')) {
-    const { error } = await supabase.from('properties').delete().eq('id', id);
-    if (error) alert(error.message);
-    else loadProperties();
+async function deleteProperty(idStr: string) {
+  const idValue = parseInt(idStr, 10);
+  if (confirm('Êtes-vous sûr de vouloir supprimer ce bien ? (ID: ' + idValue + ')')) {
+    try {
+      console.log('Attempting delete on ID: ', idValue);
+      const { error, data } = await supabase.from('properties').delete().eq('id', idValue);
+      if (error) {
+        console.error('Delete block error: ', error);
+        alert('Erreur: ' + error.message);
+      } else {
+        console.log('Delete successful', data);
+        alert('Bien supprimé avec succès!');
+        loadProperties();
+      }
+    } catch(err: any) {
+      alert('Exception catch: ' + err.message);
+    }
   }
 }
 
