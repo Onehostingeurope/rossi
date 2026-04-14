@@ -211,15 +211,20 @@ async function loadProperties() {
     `;
     propertiesList.appendChild(tr);
   });
-  
-  // Attach events
-  document.querySelectorAll('.edit-btn').forEach(btn => {
-    btn.addEventListener('click', () => editProperty((btn as HTMLElement).dataset.id!));
-  });
-  document.querySelectorAll('.delete-btn').forEach(btn => {
-    btn.addEventListener('click', () => deleteProperty((btn as HTMLElement).dataset.id!));
-  });
 }
+
+// Event Delegation for Edit/Delete to prevent listeners getting lost on DOM re-renders
+propertiesList?.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement;
+  const deleteBtn = target.closest('.delete-btn') as HTMLElement;
+  const editBtn = target.closest('.edit-btn') as HTMLElement;
+
+  if (deleteBtn && deleteBtn.dataset.id) {
+    deleteProperty(deleteBtn.dataset.id);
+  } else if (editBtn && editBtn.dataset.id) {
+    editProperty(editBtn.dataset.id);
+  }
+});
 
 // Modal handling
 addPropertyBtn?.addEventListener('click', () => {
