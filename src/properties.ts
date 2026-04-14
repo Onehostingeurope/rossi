@@ -45,6 +45,8 @@ function renderGrid(props: Property[]) {
   props.forEach((prop, i) => {
     const card = buildCard(prop, i);
     grid.appendChild(card);
+    // Trigger CSS fade-in animation
+    setTimeout(() => card.classList.add('visible'), 50 + (i * 50));
   });
 }
 
