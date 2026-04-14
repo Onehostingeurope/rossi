@@ -1,0 +1,199 @@
+/* =============================================
+   ROSSI CROISETTE IMMOBILIER — MAIN JS
+   ============================================= */
+
+'use strict';
+
+/* ---- Custom Cursor ---- */
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateFollower() {
+  followerX += (mouseX - followerX) * 0.12;
+  followerY += (mouseY - followerY) * 0.12;
+  follower.style.left = followerX + 'px';
+  follower.style.top = followerY + 'px';
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
+/* ---- Navbar Scroll ---- */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+/* ---- Mobile Menu ---- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ---- YouTube Background Video ---- */
+let ytPlayer;
+
+// Called automatically by the YouTube IFrame API once it is loaded
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: 'e0QDFQnvzBI',
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      loop: 1,
+      playlist: 'e0QDFQnvzBI', // required for seamless loop
+      controls: 0,
+      showinfo: 0,
+      rel: 0,
+      modestbranding: 1,
+      iv_load_policy: 3,
+      disablekb: 1,
+      fs: 0,
+      cc_load_policy: 0,
+      playsinline: 1,
+      enablejsapi: 1,
+    },
+    events: {
+      onReady: function (e) {
+        e.target.mute();
+        e.target.playVideo();
+      },
+      onStateChange: function (e) {
+        // Fade out the fallback image as soon as video is playing
+        if (e.data === YT.PlayerState.PLAYING) {
+          const fallback = document.getElementById('hero-fallback');
+          if (fallback) fallback.classList.add('video-ready');
+        }
+        // Safety net: restart if video somehow ends
+        if (e.data === YT.PlayerState.ENDED) {
+          e.target.seekTo(0);
+          e.target.playVideo();
+        }
+      },
+    },
+  });
+};
+
+/* ---- Scroll Reveal ---- */
+const revealElements = document.querySelectorAll(
+  '.service-card, .prop-featured, .prop-card, .neighborhood-item, .section-header, .about-image-wrap, .about-content, .contact-content, .contact-form'
+);
+
+revealElements.forEach(el => el.classList.add('reveal'));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, 60 * i);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -60px 0px'
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+/* ---- Stats Counter Animation ---- */
+const statNums = document.querySelectorAll('.stat-num');
+let statsAnimated = false;
+
+function animateStats() {
+  statNums.forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+const heroStats = document.getElementById('hero-stats');
+const statsObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !statsAnimated) {
+    statsAnimated = true;
+    setTimeout(animateStats, 600);
+  }
+}, { threshold: 0.3 });
+if (heroStats) statsObserver.observe(heroStats);
+
+/* ---- Contact Form ---- */
+const form = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
+
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('form-submit');
+    btn.style.opacity = '0.6';
+    btn.style.pointerEvents = 'none';
+    btn.querySelector('span').textContent = 'Envoi en cours...';
+
+    setTimeout(() => {
+      form.querySelectorAll('input, select, textarea').forEach(field => field.value = '');
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      btn.querySelector('span').textContent = 'Envoyer le message';
+      formSuccess.style.display = 'block';
+      setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
+    }, 1500);
+  });
+}
+
+/* ---- Smooth Anchor Override ---- */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = navbar.offsetHeight + 10;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ---- Marquee Hover Pause ---- */
+const marqueeTrack = document.querySelector('.marquee-track');
+if (marqueeTrack) {
+  marqueeTrack.addEventListener('mouseenter', () => {
+    marqueeTrack.style.animationPlayState = 'paused';
+  });
+  marqueeTrack.addEventListener('mouseleave', () => {
+    marqueeTrack.style.animationPlayState = 'running';
+  });
+}
+
+/* ---- Service cards stagger ---- */
+document.querySelectorAll('.service-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.07}s`;
+});
