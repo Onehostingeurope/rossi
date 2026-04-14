@@ -244,7 +244,7 @@ document.querySelectorAll('.service-card').forEach((el, i) => {
 const cursor = document.getElementById('cursor');
 const cursorFollower = document.getElementById('cursor-follower');
 
-if (cursor && cursorFollower) {
+if (cursor) {
   let mouseX = 0;
   let mouseY = 0;
   
@@ -254,12 +254,14 @@ if (cursor && cursorFollower) {
     cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     
     // Smooth follower using requestAnimationFrame for better performance
-    cursorFollower.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    if (cursorFollower) {
+      cursorFollower.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    }
   });
 
   document.querySelectorAll('a, button, .service-card, .prop-card, .neighborhood-item').forEach(el => {
-    el.addEventListener('mouseenter', () => cursorFollower.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
+    el.addEventListener('mouseenter', () => cursorFollower?.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursorFollower?.classList.remove('active'));
   });
 }
 
