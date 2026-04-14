@@ -180,9 +180,9 @@ async function fetchFeaturedProperties() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initYouTube('4JvamYpPjSQ');
-  loadSiteSettings();
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadSiteSettings();
+  initYouTube(siteSettings.hero_video_id || '4JvamYpPjSQ');
   fetchFeaturedProperties();
 
   // Re-instate Navbar Scroll Effect
