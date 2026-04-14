@@ -558,9 +558,8 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   grid-template-columns: 1fr 0.55fr;
   gap: 3px;
   margin-top: 0;
-  height: 70vh;
+  height: auto; /* Changed from 70vh to auto to prevent overflow */
   min-height: 550px;
-  max-height: 750px;
 }
 .prop-featured {
   position: relative;
