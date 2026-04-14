@@ -205,26 +205,17 @@ async function loadProperties() {
       <td>${prop.price.toLocaleString()} €</td>
       <td>${prop.city}</td>
       <td>
-        <button class="btn-icon edit-btn" data-id="${prop.id}">✎</button>
-        <button class="btn-icon delete delete-btn" data-id="${prop.id}">✕</button>
+        <button class="btn-icon edit-btn" onclick="window.editProperty('${prop.id}')">✎</button>
+        <button class="btn-icon delete delete-btn" onclick="window.deleteProperty('${prop.id}')">✕</button>
       </td>
     `;
     propertiesList.appendChild(tr);
   });
 }
 
-// Event Delegation for Edit/Delete to prevent listeners getting lost on DOM re-renders
-propertiesList?.addEventListener('click', (e) => {
-  const target = e.target as HTMLElement;
-  const deleteBtn = target.closest('.delete-btn') as HTMLElement;
-  const editBtn = target.closest('.edit-btn') as HTMLElement;
-
-  if (deleteBtn && deleteBtn.dataset.id) {
-    deleteProperty(deleteBtn.dataset.id);
-  } else if (editBtn && editBtn.dataset.id) {
-    editProperty(editBtn.dataset.id);
-  }
-});
+// Attach globally for inline HTML execution
+(window as any).deleteProperty = deleteProperty;
+(window as any).editProperty = editProperty;
 
 // Modal handling
 addPropertyBtn?.addEventListener('click', () => {
