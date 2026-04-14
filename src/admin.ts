@@ -131,12 +131,19 @@ settingsForm?.addEventListener('submit', async (e) => {
     { key: 'stat_2_label', value: (document.getElementById('set-stat2-label') as HTMLInputElement).value },
   ];
 
+  let hasError = false;
   for (const item of updates) {
-    await supabase.from('site_settings').upsert(item, { onConflict: 'key' });
+    const { error } = await supabase.from('site_settings').upsert(item, { onConflict: 'key' });
+    if (error) {
+      hasError = true;
+      console.error(error);
+      if (settingsStatus) settingsStatus.textContent = `Erreur: ${error.message}`;
+      break;
+    }
   }
   
-  if (settingsStatus) settingsStatus.textContent = 'Réglages mis à jour !';
-  setTimeout(() => { if (settingsStatus) settingsStatus.textContent = ''; }, 3000);
+  if (!hasError && settingsStatus) settingsStatus.textContent = 'Réglages mis à jour !';
+  setTimeout(() => { if (settingsStatus) settingsStatus.textContent = ''; }, 4000);
 });
 
 // --- MEDIA UPLOAD LOGIC ---
