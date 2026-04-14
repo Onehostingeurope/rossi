@@ -238,11 +238,11 @@ async function loadSiteSettings() {
     });
 
     // Initialize YouTube after settings are loaded (or if they fail)
-    initYouTube(siteSettings.hero_video_id || 'e0QDFQnvzBI');
+    initYouTube(siteSettings.hero_video_id || '4JvamYpPjSQ');
 
   } catch (err) {
     console.error('Error loading site settings:', err.message);
-    initYouTube('e0QDFQnvzBI'); // Fallback
+    initYouTube('4JvamYpPjSQ'); // Fallback
   }
 }
 

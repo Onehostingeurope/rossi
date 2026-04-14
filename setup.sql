@@ -43,7 +43,7 @@ CREATE POLICY "Allow authenticated update access" ON site_settings
 
 -- INITIAL SETTINGS SEEDING
 INSERT INTO site_settings (key, value) VALUES
-('hero_video_id', 'e0QDFQnvzBI'),
+('hero_video_id', '4JvamYpPjSQ'),
 ('hero_title_1', 'L''Immobilier'),
 ('hero_title_2', 'de Prestige'),
 ('hero_title_3', 'sur la Croisette'),
