@@ -49,18 +49,11 @@ async function loadSiteSettings() {
     if (aboutWrap && siteSettings.about_vid) {
       const vidUrl = siteSettings.about_vid;
 
-      // 1. Programmatic Preload Link (Highest priority for the browser)
-      const preloadLink = document.createElement('link');
-      preloadLink.rel = 'preload';
-      preloadLink.as = 'video';
-      preloadLink.href = vidUrl;
-      document.head.appendChild(preloadLink);
-
-      // 2. Cache Warmer (Explicit fetch to force disk cache)
-      // Use 'no-cors' if it's a cross-origin resource and we just want to cache the bits
+      // 1. Programmatic Preload via Fetch (Broadest compatibility)
+      // We use 'fetch' with 'no-cors' to warm the browser's disk cache
       fetch(vidUrl, { mode: 'no-cors', priority: 'high' }).catch(() => {});
 
-      // 3. Create a native video element
+      // 2. Create a native video element
       const vid = document.createElement('video');
       vid.src = vidUrl;
       vid.loop = true;
@@ -121,11 +114,19 @@ declare global {
 
 let ytPlayer: any;
 
+function extractYouTubeId(url: string): string {
+  if (!url) return '4JvamYpPjSQ';
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : url;
+}
+
 function initYouTube(videoId: string = '4JvamYpPjSQ') {
+  const cleanId = extractYouTubeId(videoId);
   if (window.YT && window.YT.Player) {
-    createPlayer(videoId);
+    createPlayer(cleanId);
   } else {
-    window.onYouTubeIframeAPIReady = () => createPlayer(videoId);
+    window.onYouTubeIframeAPIReady = () => createPlayer(cleanId);
   }
 }
 
@@ -149,13 +150,13 @@ function createPlayer(videoId: string) {
       cc_load_policy: 0,
       playsinline: 1,
       enablejsapi: 1,
+      origin: window.location.origin
     },
     events: {
       onReady: (e: any) => {
         e.target.mute();
-        e.target.setPlaybackQuality('hd1080'); // Force HD
         e.target.playVideo();
-        // Force fade out fallback immediately
+        // Redundant fade-out (Ready is usually enough for desktop)
         const fallback = document.getElementById('hero-fallback');
         if (fallback) fallback.classList.add('video-ready');
       },
@@ -163,6 +164,9 @@ function createPlayer(videoId: string) {
         if (e.data === window.YT.PlayerState.PLAYING) {
           const fallback = document.getElementById('hero-fallback');
           if (fallback) fallback.classList.add('video-ready');
+          // Update: Ensure video wrap itself is visible
+          const wrap = document.getElementById('hero-video-wrap');
+          if (wrap) wrap.style.opacity = '1';
         }
         if (e.data === window.YT.PlayerState.ENDED) {
           e.target.seekTo(0);
@@ -171,6 +175,18 @@ function createPlayer(videoId: string) {
       },
     },
   });
+
+  // Mobile 'Unstick' Bridge: Ensure video plays on first user interaction if it was blocked
+  const unstickVideo = () => {
+    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      ytPlayer.playVideo();
+      // Once stuck video is potentially resolved, we can stop listening
+      window.removeEventListener('touchstart', unstickVideo);
+      window.removeEventListener('click', unstickVideo);
+    }
+  };
+  window.addEventListener('touchstart', unstickVideo, { once: true });
+  window.addEventListener('click', unstickVideo, { once: true });
 }
 
 

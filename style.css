@@ -37,6 +37,12 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   cursor: none;
+  width: 100%;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -72,9 +78,15 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 16px; height: 16px; }
 body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { width: 60px; height: 60px; opacity: 0.5; }
 
+/* Disable custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor, .cursor-follower { display: none !important; }
+  body, button, a { cursor: auto !important; }
+}
+
 /* ---- Layout ---- */
-.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-.section { padding: var(--section-pad) 0; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; position: relative; }
+.section { padding: var(--section-pad) 0; overflow: hidden; }
 
 /* ---- Typography ---- */
 .section-eyebrow {
@@ -267,13 +279,14 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 0;
 }
 /* ---- YouTube Video Background ---- */
 .hero-video-wrap {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 /* Scale the iframe to always cover the hero, regardless of aspect ratio */
 #yt-player {
@@ -292,7 +305,6 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   top: 0; left: 0;
   width: 100% !important;
   height: 100% !important;
-  pointer-events: none;
   border: none;
 }
 
@@ -304,7 +316,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  z-index: 1;
+  z-index: 2;
   transition: opacity 1s ease;
 }
 .hero-img-fallback.video-ready {
@@ -321,6 +333,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
     rgba(10,10,10,0.5) 60%,
     rgba(10,10,10,0.95) 100%
   );
+  z-index: 3;
 }
 .hero-grain {
   position: absolute;
@@ -328,10 +341,11 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   opacity: 0.4;
   pointer-events: none;
+  z-index: 4;
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding: 0 40px 140px;
   max-width: 900px;
 }
@@ -407,7 +421,7 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  z-index: 15;
   display: flex;
   align-items: center;
   gap: 0;
@@ -462,7 +476,11 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
 .marquee-track .dot { color: var(--gold); font-size: 0.5rem; }
 
 /* ========== SERVICES ========== */
-.services-section { background: var(--dark); }
+.services-section { 
+  background: var(--dark); 
+  position: relative;
+  z-index: 20;
+}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1190,9 +1208,10 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
     overflow: visible;
   }
   .hero-bg { 
-    height: 100svh; 
-    position: fixed; /* Keep video fixed while titles scroll? Or keep it absolute in a specific container. */
+    height: 100%; 
+    position: absolute; 
     top: 0; 
+    left: 0;
     width: 100%;
     z-index: 1;
   }
@@ -1207,23 +1226,26 @@ body:has(a:hover) .cursor-follower, body:has(button:hover) .cursor-follower { wi
     justify-content: center; 
     align-items: center; 
     text-align: center;
-    z-index: 5;
+    z-index: 10;
   }
   .hero-stats { 
     position: relative; 
     width: 100%; 
     background: #0a0a0a; 
     padding: 100px 24px;
+    display: flex;
     flex-direction: column; 
+    align-items: center;
     gap: 60px;
-    z-index: 10;
+    z-index: 20;
     margin-top: 0;
     border-top: 1px solid rgba(201,169,110,0.1);
+    box-sizing: border-box;
   }
-  .stat-item { border-bottom: 1px solid rgba(201,169,110,0.1); padding-bottom: 20px; width: 100%; }
+  .stat-item { border-bottom: 1px solid rgba(201,169,110,0.1); padding-bottom: 20px; width: 100%; box-sizing: border-box; }
   .stat-item:last-child { border-bottom: none; }
   .stat-divider { display: none; }
-  .hero-scroll { display: none; }
+  .hero-scroll { display: none !important; }
 
   /* Properties */
   .properties-showcase { grid-template-columns: 1fr; height: auto; max-height: none; }
