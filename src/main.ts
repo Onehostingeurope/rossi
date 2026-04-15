@@ -33,19 +33,10 @@ async function loadSiteSettings() {
       if (el && val) el.textContent = val;
     }
 
-    // Apply stats values
-    const stats = [
-      { id: 'stat-1-val', key: 'stat_1_val' },
-      { id: 'stat-2-val', key: 'stat_2_val' },
-      { id: 'stat-3-val', key: 'stat_3_val' },
-    ];
-
-    stats.forEach(s => {
-      const el = document.getElementById(s.id);
-      if (el && siteSettings[s.key]) {
-        el.setAttribute('data-target', siteSettings[s.key]);
-      }
-    });
+    for (const [id, val] of Object.entries(updates)) {
+      const el = document.getElementById(id);
+      if (el && val) el.textContent = val;
+    }
 
     // Handle About Image & Video dynamically
     const aboutImgNode = document.querySelector('.about-img') as HTMLImageElement;
@@ -56,12 +47,27 @@ async function loadSiteSettings() {
     }
 
     if (aboutWrap && siteSettings.about_vid) {
-      // Create a native video element
+      const vidUrl = siteSettings.about_vid;
+
+      // 1. Programmatic Preload Link (Highest priority for the browser)
+      const preloadLink = document.createElement('link');
+      preloadLink.rel = 'preload';
+      preloadLink.as = 'video';
+      preloadLink.href = vidUrl;
+      document.head.appendChild(preloadLink);
+
+      // 2. Cache Warmer (Explicit fetch to force disk cache)
+      // Use 'no-cors' if it's a cross-origin resource and we just want to cache the bits
+      fetch(vidUrl, { mode: 'no-cors', priority: 'high' }).catch(() => {});
+
+      // 3. Create a native video element
       const vid = document.createElement('video');
-      vid.src = siteSettings.about_vid;
+      vid.src = vidUrl;
       vid.loop = true;
       vid.muted = false;
       vid.playsInline = true;
+      vid.preload = 'auto'; // Ensure it starts buffering immediately
+      
       // Styling it to sit perfectly on top of the image
       vid.className = 'about-img';
       vid.style.position = 'absolute';
@@ -277,3 +283,44 @@ if (cursor) {
     el.addEventListener('mouseleave', () => cursorFollower?.classList.remove('active'));
   });
 }
+
+/* ============================================================
+   STAT COUNTER ANIMATION
+   ============================================================ */
+function initStatCounters() {
+  const stats = document.querySelectorAll('.stat-num');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target as HTMLElement;
+        const target = parseInt(el.getAttribute('data-target') || '0');
+        if (target > 0) {
+          animateValue(el, 0, target, 2000);
+          observer.unobserve(el);
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  stats.forEach(stat => observer.observe(stat));
+}
+
+function animateValue(obj: HTMLElement, start: number, end: number, duration: number) {
+  let startTimestamp: number | null = null;
+  const step = (timestamp: number) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start).toString();
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      obj.innerHTML = end.toString();
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initStatCounters();
+});

@@ -1,0 +1,216 @@
+
+    <div class="item__container h-full lg:h-[23rem] h-[32rem] flex flex-col lg:odd:flex-row">
+        <div class="item__decorate aspect-[15/14] lg:aspect-auto h-[13rem] lg:h-auto w-full relative">
+            <div class="banner absolute top-3 left-3 mr-12 z-10">
+    <div class="banner__status--text">
+        <div class="banner__status--wrap flex flex-wrap  ">
+                            
+                                                                                                                                    
+                                                                    </div>
+    </div>
+</div>
+
+            <button class="item__selection absolute top-3 right-3 p-2 rounded-full selection-manager js-selectionToggle  z-10" data-add-url="/i/selection/addbien?idbien=170" data-remove-url="/i/selection/deletebien?idbien=170" data-alt-text="">
+
+                <span class="selection-manager__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20.234" height="18.182" viewBox="0 0 20.234 18.182" class="selection-manager__svg">
+        <path class="fill_element" d="m18.28,2.15c-1.08-1.16-2.6-1.82-4.19-1.81-1.2,0-2.37.4-3.32,1.14-.23.18-.45.37-.65.58-.2-.21-.42-.4-.65-.58-.94-.74-2.11-1.14-3.32-1.14-1.59,0-3.11.65-4.19,1.81C.88,3.35.3,4.9.32,6.51c.04,1.81.74,3.53,1.97,4.86,1.4,1.54,2.93,2.97,4.56,4.27.62.52,1.32,1.11,2.04,1.75.7.61,1.75.61,2.44,0,.68-.59,1.33-1.14,1.92-1.64l.12-.11c1.64-1.3,3.16-2.73,4.57-4.27,1.23-1.33,1.93-3.06,1.97-4.86.02-1.6-.56-3.16-1.64-4.35"></path>
+    <path class="stroke_element" d="m18.54,1.88h0C17.43.67,15.86-.01,14.22,0c-1.24,0-2.45.41-3.42,1.18-.24.18-.46.38-.67.6-.21-.22-.44-.42-.67-.6C8.47.41,7.26,0,6.02,0c-1.64-.01-3.21.67-4.32,1.88C.58,3.13-.02,4.74,0,6.41c.04,1.88.76,3.67,2.03,5.05,1.45,1.6,3.02,3.09,4.71,4.43.64.54,1.36,1.16,2.11,1.81.72.63,1.8.63,2.52,0,.7-.61,1.38-1.19,1.98-1.7l.13-.11c1.69-1.35,3.27-2.83,4.72-4.44,1.27-1.38,2-3.18,2.03-5.05.02-1.67-.58-3.28-1.69-4.53Zm-1.61,8.53c-1.39,1.53-2.9,2.94-4.51,4.23l-.13.11c-.61.52-1.28,1.1-2,1.72-.1.08-.25.08-.35,0-.75-.66-1.48-1.28-2.13-1.84-1.61-1.28-3.11-2.69-4.5-4.22-1.02-1.09-1.61-2.51-1.66-4-.02-1.25.43-2.46,1.26-3.4.8-.87,1.93-1.36,3.11-1.36.88,0,1.73.29,2.41.83.39.3.73.66,1.01,1.06.27.37.78.45,1.15.19.07-.05.13-.11.19-.19.29-.4.63-.76,1.02-1.06.69-.54,1.54-.83,2.41-.83,1.18,0,2.31.48,3.11,1.35.83.93,1.28,2.15,1.26,3.4-.05,1.49-.63,2.91-1.65,4h0Z"></path>
+</svg>
+                </span>
+                <span class="selection-manager__text js-selection-text"></span>
+            </button>
+            <div class="item__visual lg:h-full w-full h-[13rem] w-full">
+
+                <div class="item__media-swiper h-full js-propertiesMedia-list " data-l-swiperloop="1" data-l-swiperspeed="900">
+                    <div class="item__media-swiper-wrapper swiper-wrapper">
+                        
+
+                                                    
+                            <div class="swiper-slide">
+                                <picture data-size="766x527" class="media-js">
+                                    <source srcset="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_77ea6dcaa3636bb0a92edd41ac9f8c88.jpg" media="(min-width:768px)">
+                                    <img src="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_77ea6dcaa3636bb0a92edd41ac9f8c88.jpg" class="h-full w-full object-cover media-js" loading="lazy" alt="" width="900" height="auto">
+                                </picture>
+                            </div>
+                                                                                
+                            <div class="swiper-slide">
+                                <picture data-size="766x527" class="media-js">
+                                    <source srcset="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_08de491199a8b2bf1ca72793e471135e.jpg" media="(min-width:768px)">
+                                    <img src="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_08de491199a8b2bf1ca72793e471135e.jpg" class="h-full w-full object-cover media-js" loading="lazy" alt="" width="900" height="auto">
+                                </picture>
+                            </div>
+                                                                                
+                            <div class="swiper-slide">
+                                <picture data-size="766x527" class="media-js">
+                                    <source srcset="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_dba6687192f286313b3fe3204bf27f77.jpg" media="(min-width:768px)">
+                                    <img src="//rossiprestigeimmobilier.staticlbi.com/900xauto/images/biens/1/a37255e2cb1f244929a0ace250b8e6f4/photo_dba6687192f286313b3fe3204bf27f77.jpg" class="h-full w-full object-cover media-js" loading="lazy" alt="" width="900" height="auto">
+                                </picture>
+                            </div>
+                                                                                                    </div>
+                                            <div class="item__media-swiper-nav relative  flex flex-col-reverse lg:flex-row items-center justify-between">
+                            <!-- If we need pagination buttons -->
+                            <div class="item__media-swiper-pagination z-50 -top-8 lg:-top-10 swiper-pagination"></div>
+                        </div>
+                                    </div>
+
+            </div>
+                    </div>
+
+        <div class="item__content flex flex-col items-center justify-center text-center w-full  lg:h-full h-[19rem] px-5 p-5 lg:py-16 lg:px-7 overflow-hidden z-10">
+            <div class="item__block w-full h-full flex flex-col justify-around">
+                                                                <div class="item__block--city">
+                    
+                                                                                
+
+
+<div id="" class="title-v1  ">
+            <span class="title-v1__part1">Le Cannet (06110)</span>
+        </div>
+
+                </div>
+
+                <div class="item__title text-center xl:text-center">
+                    <p class="item__block--title line-clamp-3">
+                        Appartement
+                                                                                                                                                                                                                                                                                                                        3 pièce(s)                                                                                                                                                                                                          2 chambre(s)                                                                                                                                                                                                          91.95  m²                                                                                                                                         
+                                                                                                                                                
+                                                                                                                                                
+                                                    
+                                                                                                                                                
+                                            </p>
+                </div>
+                <div class="item__options lg:max-h-full max-h-[6rem] overflow-hidden">
+                    <div class="options flex flex-wrap justify-around lg:my-2 my-2">
+                                                                        
+                                                                                                    
+                            
+                                                                                                            <div class="option  flex gap-2 w-1/3 justify-center lg:py-2 py-1 content-center items-center">
+                                <svg class="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  
+<g transform="translate(2 2)">
+    <g>
+      <line class="svg__primary--stroke" x2="3.123" y2="3.17" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+      <path class="svg__primary--stroke" d="M12.458,3.743a6.116,6.116,0,0,0-8.741.09,6.341,6.341,0,0,0,0,8.784" transform="translate(-0.594 -0.574)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+      <line class="svg__primary--stroke" x1="12.487" y2="12.677" transform="translate(1.249 1.268)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+      <line class="svg__secondary--stroke" y2="0.013" transform="translate(12.487 16.48)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+      <path class="svg__secondary--stroke" d="M0,0V.013" transform="translate(7.492 15.212)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-width="2"></path>
+      <line class="svg__secondary--stroke" y2="0.013" transform="translate(11.238 11.409)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+      <line class="svg__secondary--stroke" y2="0.013" transform="translate(14.985 7.606)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+      <line class="svg__secondary--stroke" y2="0.013" transform="translate(8.741 20.283)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+      <line class="svg__secondary--stroke" y2="0.013" transform="translate(16.233 12.677)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+      <path class="svg__secondary--stroke" d="M0,0V.013" transform="translate(19.979 8.874)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-width="2"></path>
+    </g>
+  </g>
+  <rect width="24" height="24" fill="none"></rect>
+</svg>
+
+                                                                    <span class="option__number px-2.5 py-1 rounded-full">
+                                                                                                                                    2
+                                                                                                                                                                    </span>
+                                                            </div>
+                                                                        
+                            
+                                                                                                    
+                            
+                                                                                                            <div class="option  flex gap-2 w-1/3 justify-center lg:py-2 py-1 content-center items-center">
+                                <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  
+<defs>
+    <clipPath id="clip-path-balcony">
+      <rect width="21.771" height="21.5" fill="none"></rect>
+    </clipPath>
+  </defs>
+  <rect width="24" height="24" fill="none"></rect>
+  <g transform="translate(-1.229 -0.25)">
+    <g transform="translate(2.229 1.25)">
+      <g clip-path="url(#clip-path-balcony)">
+        <path class="svg__primary--stroke" d="M2.33,10.75V2.392A1.642,1.642,0,0,1,3.972.75H17.8a1.642,1.642,0,0,1,1.641,1.642l.02,8.358" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+        <line class="svg__primary--stroke" y2="9.214" transform="translate(10.885 1.536)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <path class="svg__primary--stroke" d="M21.021,18.805a1.945,1.945,0,0,1-1.945,1.945H2.695A1.945,1.945,0,0,1,.75,18.805" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+        <path class="svg__primary--stroke" d="M.75,14.75a1.945,1.945,0,0,1,1.945-1.945H19.076a1.945,1.945,0,0,1,1.945,1.945" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+        <line class="svg__primary--stroke" y2="6" transform="translate(10.961 13.75)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__primary--stroke" y2="6" transform="translate(7.211 13.75)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__primary--stroke" y2="6" transform="translate(14.711 13.75)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__primary--stroke" y2="6" transform="translate(18.461 13.75)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__primary--stroke" y2="6" transform="translate(3.461 13.75)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__secondary--stroke" x1="3.424" y2="3.424" transform="translate(4.037 3.449)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-width="1.5"></line>
+        <line class="svg__secondary--stroke" x1="1.712" y2="1.713" transform="translate(4.057 2.592)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-width="1.5"></line>
+      </g>
+    </g>
+  </g>
+</svg>
+
+                                                                    <span class="option__number px-2.5 py-1 rounded-full">
+                                                                                                                                    Balcon                                                                                                                                                                    </span>
+                                                            </div>
+                                                                        
+                            
+                                                                                                            <div class="option  flex gap-2 w-1/3 justify-center lg:py-2 py-1 content-center items-center">
+                                <svg class="option__drawing" id="icon-ascenseur" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+ 
+<rect id="Rectangle_2962" data-name="Rectangle 2962" width="24" height="24" fill="none"></rect>
+  <g id="Groupe_14655" data-name="Groupe 14655" transform="translate(-470.5 -8135)">
+    <path id="Tracé_33172" data-name="Tracé 33172" d="M0,0V15.876" transform="translate(482.5 8141.751)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-width="1.5"></path>
+    <line id="Ligne_443" data-name="Ligne 443" x2="19.771" transform="translate(472.5 8141.751)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+    <rect id="Rectangle_2888" data-name="Rectangle 2888" width="20.271" height="20.627" rx="1.945" transform="translate(472.5 8137)" fill="none" stroke="#0c5c6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></rect>
+    <path id="chevron-down_1_" data-name="chevron-down (1)" d="M3.757,0,1.879,1.88,0,0" transform="translate(486.176 8151.447) rotate(-90)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+    <path id="chevron-down_1_2" data-name="chevron-down (1)" d="M3.757,0,1.879,1.879,0,0" transform="translate(478.824 8147.689) rotate(90)" fill="none" stroke="#acc4c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  </g>
+</svg>
+
+                                                                    <span class="option__number px-2.5 py-1 rounded-full">
+                                                                                                                                    Ascenseur                                                                                                                                                                    </span>
+                                                            </div>
+                                                                        
+                            
+                            
+                            
+                                                                                                                                    
+                    </div>
+                </div>
+
+                <div class="item__price my-2">
+                        
+            413 000 €
+    
+    
+
+                </div>
+
+                
+
+            </div>
+                            <div class="item__links self-center lg:self-center pb-4 lg:pb-0 lg:mt-4 mt-2">
+                    <div class="links-group">
+                        <div class="links-group__wrapper">
+                                                                
+    <div class="links-group ">
+        <div class="links-group__wrapper flex ">
+                                                                                
+                                                    
+                                                    
+                
+                                                                
+                                                    
+                                            <a href="/vente/9-le-cannet/appartement/170-le-cannet-grand-3-pieces-parking-et-cave" class="links-group__link links-group__link--drawing cta-secondary" target="" title="Voir le bien LE CANNET GRAND 3 PIECES PARKING ET CAVE ">
+                            <span class="links-group__text cta-secondary__text">Voir le bien</span>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="cta-secondary__drawing" width="9.507" height="9.507" viewBox="0 0 9.507 9.507">
+        <g transform="translate(-4.25 -4.25)">
+        <path d="M13.007,12.75H5a.75.75,0,0,1,0-1.5h8.007a.75.75,0,1,1,0,1.5Z" transform="translate(0 -2.996)"></path>
+        <path d="M12,13.757a.75.75,0,0,1-.516-1.295L15.139,9,11.484,5.545a.75.75,0,1,1,1.031-1.089l4.23,4a.75.75,0,0,1,0,1.089l-4.23,4A.748.748,0,0,1,12,13.757Z" transform="translate(-3.223)"></path>
+    </g>
+</svg>
+
+                                                    </a>
+                    
+                
+                    </div>
+    </div>
+
+                                                    </div>
+                    </div>
+                </div>
+                    </div>
+
+    </div>

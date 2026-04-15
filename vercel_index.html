@@ -11,11 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://pamcbwpgjuiujekugnbd.supabase.co" />
-  <link rel="dns-prefetch" href="https://pamcbwpgjuiujekugnbd.supabase.co" />
-  <script type="module" crossorigin src="/assets/supabase-CsOZGM-w.js"></script>
-  <script type="module" crossorigin src="/assets/main-P-Qune3m.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-DanDyCiN.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -32,7 +28,7 @@
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#services" class="nav-link" id="nav-services">Services</a></li>
-        <li><a href="/properties" class="nav-link" id="nav-properties">Propriétés</a></li>
+        <li><a href="properties.html" class="nav-link" id="nav-properties">Propriétés</a></li>
         <li><a href="#about" class="nav-link" id="nav-about">Notre Agence</a></li>
         <li><a href="#contact" class="nav-link nav-link--cta" id="nav-contact">Nous Contacter</a></li>
       </ul>
@@ -50,7 +46,7 @@
         <div id="yt-player"></div>
       </div>
       <!-- Fallback image while video loads -->
-      <img src="/assets/hero-BnhPAglU.png" alt="Cannes Croisette vue aérienne" class="hero-img hero-img-fallback" id="hero-fallback" />
+      <img src="hero.png" alt="Cannes Croisette vue aérienne" class="hero-img hero-img-fallback" id="hero-fallback" />
       <div class="hero-overlay"></div>
       <div class="hero-grain"></div>
     </div>
@@ -61,9 +57,9 @@
         <span class="badge-line"></span>
       </div>
       <h1 class="hero-title" id="hero-title">
-        <span class="hero-title-line" id="hero-title-1">L'Immobilier</span>
-        <span class="hero-title-line hero-title-italic" id="hero-title-2">de Prestige</span>
-        <span class="hero-title-line" id="hero-title-3">sur la Croisette</span>
+        <span class="hero-title-line">L'Immobilier</span>
+        <span class="hero-title-line hero-title-italic">de Prestige</span>
+        <span class="hero-title-line">sur la Croisette</span>
       </h1>
       <p class="hero-subtitle" id="hero-subtitle">
         Depuis 2016, Brigitte Rossi vous ouvre les portes<br>
@@ -80,18 +76,18 @@
     </div>
     <div class="hero-stats" id="hero-stats">
       <div class="stat-item">
-        <span class="stat-num" id="stat-1-val" data-target="25">25</span>
-        <span class="stat-label" id="stat-1-label">Années d'expertise</span>
+        <span class="stat-num" data-target="9">0</span>
+        <span class="stat-label">Années d'expertise</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-num" id="stat-2-val" data-target="489">489</span>
-        <span class="stat-label" id="stat-2-label">Biens vendus</span>
+        <span class="stat-num" data-target="350">0</span>
+        <span class="stat-label">Biens vendus</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-num" id="stat-3-val" data-target="99">99</span>
-        <span class="stat-label" id="stat-3-label">% clients satisfaits</span>
+        <span class="stat-num" data-target="98">0</span>
+        <span class="stat-label">% clients satisfaits</span>
       </div>
     </div>
   </section>
@@ -181,7 +177,7 @@
 
     <div class="properties-showcase">
       <div class="prop-featured" id="prop-featured">
-        <img src="/assets/property1-DTXmavlV.png" alt="Penthouse vue mer Cannes Croisette" class="prop-img" loading="lazy" />
+        <img src="property1.png" alt="Penthouse vue mer Cannes Croisette" class="prop-img" loading="lazy" />
         <div class="prop-overlay">
           <div class="prop-tag">Coup de cœur</div>
           <div class="prop-info">
@@ -195,7 +191,7 @@
 
       <div class="prop-side">
         <div class="prop-card" id="prop-villa">
-          <img src="/assets/villa-DcLuZYzp.png" alt="Villa vue mer Cannes" class="prop-card-img" loading="lazy" />
+          <img src="villa.png" alt="Villa vue mer Cannes" class="prop-card-img" loading="lazy" />
           <div class="prop-card-content">
             <p class="prop-card-type">Villa — La Californie</p>
             <h3 class="prop-card-name">Villa d'Exception</h3>
@@ -205,7 +201,7 @@
         </div>
 
         <div class="prop-card" id="prop-appt">
-          <img src="/assets/property1-DTXmavlV.png" alt="Appartement Croisette Cannes" class="prop-card-img prop-card-img--alt" loading="lazy" />
+          <img src="property1.png" alt="Appartement Croisette Cannes" class="prop-card-img prop-card-img--alt" loading="lazy" />
           <div class="prop-card-content">
             <p class="prop-card-type">Appartement — Arrière Croisette</p>
             <h3 class="prop-card-name">Le Relais de la Reine</h3>
@@ -228,20 +224,8 @@
   <section id="about" class="section about-section">
     <div class="about-inner">
       <div class="about-image-wrap" id="about-image">
-        <img src="/assets/brigitte-v2-DiQ9T8LA.jpg" alt="Brigitte Rossi — Directrice Agence Rossi Croisette Immobilier" class="about-img" loading="lazy" />
+        <img src="brigitte.png" alt="Brigitte Rossi — Directrice Agence Rossi Croisette Immobilier" class="about-img" loading="lazy" />
         <div class="about-img-frame"></div>
-        
-        <!-- Talking Feature Elements -->
-        <div class="talk-indicator" id="talk-indicator">
-          <span>Audio Live</span>
-          <div class="pulse-ring"></div>
-        </div>
-        
-        <div class="about-speech-bubble" id="about-speech-bubble">
-          <p class="bubble-content"></p>
-          <div class="bubble-tail"></div>
-        </div>
-
         <div class="about-quote-card">
           <p class="about-quote">"Votre rêve est unique. Votre projet immobilier l'est également."</p>
           <span class="about-quote-author">— Brigitte Rossi</span>
@@ -255,15 +239,15 @@
         <p class="about-text">Chaque dossier est traité avec la plus grande rigueur et discrétion. Nous plaçons systématiquement l'humain au centre de notre démarche.</p>
         <div class="about-badges">
           <div class="about-badge-item">
-            <span class="badge-icon"></span>
+            <span class="badge-icon">✦</span>
             <span>Présence sur la Croisette depuis 2016</span>
           </div>
           <div class="about-badge-item">
-            <span class="badge-icon"></span>
+            <span class="badge-icon">✦</span>
             <span>Réseau exclusif sur la Côte d'Azur</span>
           </div>
           <div class="about-badge-item">
-            <span class="badge-icon"></span>
+            <span class="badge-icon">✦</span>
             <span>Expertise biens de prestige & viager</span>
           </div>
         </div>
@@ -472,7 +456,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Rossi Croisette Immobilier — Tous droits réservés - Design OneHostingEurope</p>
+      <p>© 2026 Rossi Croisette Immobilier — Tous droits réservés</p>
       <div class="footer-socials">
         <a href="https://www.instagram.com/brigitterossi06/" target="_blank" rel="noopener" aria-label="Instagram" id="footer-instagram">Instagram</a>
         <a href="https://www.facebook.com/RossiCroisetteImmobilier" target="_blank" rel="noopener" aria-label="Facebook" id="footer-facebook">Facebook</a>
@@ -481,19 +465,8 @@
     </div>
   </footer>
 
-  <!-- Supabase & App Logic -->
-
   <!-- YouTube IFrame API -->
-  <script>
-    // Early initialization to catch the YouTube API callback as soon as it loads
-    window.onYouTubeIframeAPIReady = function() {
-      // If the main.ts module hasn't loaded yet, it will overwrite this with a version that calls createPlayer.
-      // If it HAS loaded, it will define initYouTube.
-      if (typeof window.initYouTube === 'function') {
-        window.initYouTube();
-      }
-    };
-  </script>
   <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="main.js"></script>
 </body>
 </html>
